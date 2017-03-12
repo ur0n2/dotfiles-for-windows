@@ -2,3 +2,4 @@
 * Doskey_Registry.reg: DOSKEY Registry
 * Putty_Setting_Registry.reg: Putty Setting Registry
 * tc.lnk: Trash Clean
+* For Portable Windows UX

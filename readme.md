@@ -3,3 +3,4 @@
 * Putty_Setting_Registry.reg: Putty Setting Registry
 * tc.lnk: Trash Clean
 * For Portable Windows UX
+* Todo: shell:sendto, t, l, linked, auto_putty

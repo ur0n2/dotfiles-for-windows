@@ -1,0 +1,132 @@
+[QATBar.ItemLink0]
+ItemName=btnEditUndo
+BeginGroup=0
+UserDefine=00
+ButtonGroup=0
+Position=0
+ViewLevels=1F
+Visible=1
+UseCount=20
+RecentIndex=0
+
+[QATBar.ItemLink1]
+ItemName=btnEditRedo
+BeginGroup=0
+UserDefine=00
+ButtonGroup=0
+Position=0
+ViewLevels=1F
+Visible=1
+UseCount=20
+RecentIndex=1
+
+[QATBar]
+ItemLinkCount=2
+
+[Setting]
+Language2=Korean
+CaptureType2=3
+ColorPickerMode=0
+SaveFormat=3
+EditorColorPaletteType=1
+FirstRun=4230
+CheckUpdate=0
+ShowCaptureBar=0
+UserDefined
+UseAutoSave=1
+ExternalProgramPath=
+ExternalProgramParameter=
+EditorCenterImage=0
+CloseWithoutAsk=0
+BackgroundGrid=0
+BackgroundColor=15194575
+ExitWhenClosing=0
+AutoFlatten=0
+DualCapture=1
+CaptureSound=1
+ShowCursor=0
+HideEditor=1
+AlwaysCopyClipboard=1
+AdvancedControlCapture=0
+ShowMagnifier=1
+ScrollDelay=100
+CaptureDelay=0
+MagnifierZoomScale=5
+JPEGQuality=100
+LeftColor=0
+RightColor=16777215
+HighlightLeftColor=65535
+HighlightRightColor=16777215
+ToolPenWidth=2
+ToolEraseType=2
+ToolFontStrName=Tahoma
+ToolFontSize=12
+ToolFontBold=1
+ToolFontItalic=0
+ToolFontUnderline=0
+ToolFontColor=0
+QATPosition=0
+FixedRectWidth=400
+FixedRectHeight=100
+ColorPickerSharp=0
+MagnifierScale=2
+
+[HotKeys3]
+FullScreenCapture=11149
+ActiveWindowCapture=11228
+ControlCapture=12149
+ScrollingWindowCapture=12249
+SelectCapture=11227
+FixedRectCapture=11229
+FreeHandCapture=22249
+LastCapture=11100
+Editor=11230
+ColorPickerTool=11100
+MagnifierTool=11100
+RulerTool=11100
+CrossHairTool=11100
+DrawPenTool=11100
+ProtractorTool=11100
+PaletteTool=11100
+
+[FTP]
+HostName=
+RemotePath=
+PassiveMode=0
+Port=21
+User=anonymous
+Password=
+OpenWebbrowser=0
+CopyClipboard=0
+CopyClipboardAddress=
+
+[Placement]
+Maximized=0
+Left=395
+Top=190
+Width=1130
+Height=700
+MagnifierLeft=10
+MagnifierTop=10
+MagnifierWidth=314
+MagnifierHeight=314
+
+[ColorPalette]
+Code 0=-1
+Code 1=-1
+Code 2=-1
+Code 3=-1
+Code 4=-1
+Code 5=-1
+Code 6=-1
+Code 7=-1
+Code 8=-1
+Code 9=-1
+Code 10=-1
+Code 11=-1
+Code 12=-1
+Code 13=-1
+Code 14=-1
+Code 15=-1
+
+

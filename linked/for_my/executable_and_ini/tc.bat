@@ -1,0 +1,1 @@
+%systemroot%\system32\cmd.exe /c rd /s /q %systemdrive%\$Recycle.bin

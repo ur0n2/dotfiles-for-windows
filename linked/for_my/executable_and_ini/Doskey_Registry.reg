@@ -1,0 +1,4 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Command Processor]
+"Autorun"="%SYSTEMDRIVE%\\\\linked\\\\for_my\\\\executable_and_ini\\\\Doskey_Alias_Setting.cmd"

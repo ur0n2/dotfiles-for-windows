@@ -1,45 +1,4 @@
-# Dotfiles for Windows
-## ??(post image)
-* If you're computer to formatted. As then, "dotfiles for windows" makes compact to environment for your computing performance. This is oriented a pure windows environment. In addtition, I recommend to Powershell or Windows Bash Shell(from Windows 10 RS1)
-* You can used to windows super key that is "Win + R"
-* You can used in intranet. For example, route command, intranet auto login, messenger and etc.
-* Make use of anything for Portable Windows UX
-* ~~In fact, this setting optimize to me.~~
-
-## How To Use
-* "setup.bat" run by Administrator priviliege
-* Required to UAC elevation for Registry, CMD, BAT and etc file.
-
-## Include tiny utilitys
-### PicPick Hotkey
-* PickPick is cpture program. png folder
-* Alt + 1
-* Alt + 2
-* Alt + 3
-* Alt + 4
-* Alt + F1
-
-### Naver Dictionary
-* asd
-
-### Core Dictionary
-* asd
-
-### Google Translator
-* asd
-
-### Fast Putty(https://github.com/ur0n2/Fast-Putty)
-* asd
-* With pretty color set and configuration set.
-
-### Doskey Alias
-
-###
-
-## Todo
-* powershell environment(ssh, wget, git alias, etc...)
-
-## Directory Tree
+dotfiles-for-windows
 ¦¢  .gitattributes
 ¦¢  readme.md
 ¦¢  setup.bat

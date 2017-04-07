@@ -2,6 +2,7 @@ import subprocess
 import os
 import sys
 import ctypes
+from urllib import quote_plus
 
 OpenClipboard = ctypes.windll.user32.OpenClipboard
 EmptyClipboard = ctypes.windll.user32.EmptyClipboard
@@ -49,22 +50,28 @@ def put(s):
 paste = get
 copy = put
 
+
+prgm_path = ""
+if os.environ.get("PROGRAMFILES(X86)") is None: #this case is 32bit 
+    prgm_path = os.environ.get("PROGRAMFILES")
+else:
+    prgm_path = os.environ.get("PROGRAMFILES(X86)")
+#print prgm_path
+base_url= "https://translate.google.co.kr/#auto/ko/" #Google Translate Query URL
+
+
 if len(sys.argv) is 1:
     print "You don't type argument(s)"
-
-    base_url= "https://translate.google.co.kr/#auto/ko/" #Google Translate Query URL
-    from urllib import quote_plus
     value = quote_plus(str(get())) #quote is not encode to slash('/')
-    print "testvalue: " +  value
-
-    prgm_path = ""
-    if os.environ.get("PROGRAMFILES(X86)") is None: #this case is 32bit 
-        prgm_path = os.environ.get("PROGRAMFILES")
-    else:
-        prgm_path = os.environ.get("PROGRAMFILES(X86)")
-    #print prgm_path
+    #print "testvalue: " +  value
 
     query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + value #Make query
     print query
     subprocess.check_call(query, shell=False)
+else:
+    value = quote_plus(str(sys.argv[1:]))[6:-6] #quote is not encode to slash('/')
+    #print "testvalue: " +  value
 
+    query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + value #Make query
+    print query
+    subprocess.check_call(query, shell=False)

@@ -53,7 +53,7 @@ if len(sys.argv) is 1:
     print "You don't type argument(s)"
 
     base_url= "https://translate.google.co.kr/#auto/ko/" #Google Translate Query URL
-    from urllib import quote
+    from urllib import quote_plus
     value = quote_plus(str(get())) #quote is not encode to slash('/')
     print "testvalue: " +  value
 

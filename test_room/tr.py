@@ -51,23 +51,20 @@ copy = put
 
 if len(sys.argv) is 1:
     print "You don't type argument(s)"
-    print get()
 
     base_url= "https://translate.google.co.kr/#auto/ko/" #Google Translate Query URL
-    value = str(get()) # '%20'.join(get()) #'%20'.join(sys.argv[1:]) #search value
+    from urllib import quote
+    value = quote_plus(str(get())) #quote is not encode to slash('/')
     print "testvalue: " +  value
 
-    prgm_path = "asD"
+    prgm_path = ""
     if os.environ.get("PROGRAMFILES(X86)") is None: #this case is 32bit 
         prgm_path = os.environ.get("PROGRAMFILES")
     else:
         prgm_path = os.environ.get("PROGRAMFILES(X86)")
-    print prgm_path
+    #print prgm_path
 
     query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + value #Make query
     print query
     subprocess.check_call(query, shell=False)
-
-    #test_room
-#    test_data = open("tddd.txt")
 

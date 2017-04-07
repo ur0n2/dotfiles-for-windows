@@ -94,10 +94,12 @@ function SHELL_SENDTO_REGISTER{
     Write-Output "[+] shell:sendto 등록"
 }
 
-Set-ExecutionPolicy RemoteSigned -Force
+function EXECUTIONPOLICY_RECOVERY{
+    Set-Executionpolicy Restricted
+}
 
-ENV_VAR_REGISTER
-<#
+
+
 MAKE_DIR_FOR_DESKTOP
 ENV_VAR_REGISTER
 FAVORITE_COPY
@@ -107,9 +109,9 @@ STARTUP_REGISTER
 PICPICK_SETTING
 HELP_MOD
 SHELL_SENDTO_REGISTER
-#>
+
 Write-Output "[+] 압축파일 확장자 연결프로그램 7z으로 등록"
 COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL
-
+EXECUTIONPOLICY_RECOVERY
 
 #Read-Host 'Press Enter to continue…' | Out-Null

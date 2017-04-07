@@ -6,8 +6,14 @@
 * ~~In fact, this setting is optimize to me.~~
 
 ## Getting Started
-* "setup.bat" run by Administrator priviliege
-* Required to UAC elevation for Registry, CMD, BAT and etc file.
+* Required to UAC privilege.
+<pre><code>
+powershell Start-Process powershell_ISE -Verb runas 
+Set-Executionpolicy ByPass -Force
+git clone
+cd .\dotfiles-for-windows\
+.\setup_ps.ps1
+</code></pre>
 
 ### Windows RUN(Win + R)
 * refer to directory tree

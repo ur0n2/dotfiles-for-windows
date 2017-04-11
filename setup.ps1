@@ -2,15 +2,15 @@
 #LeeJunHwan(ur0n2)
 
 function MAKE_DIR_FOR_DESKTOP{
-    Write-Output "[+] ¹ÙÅÁÈ­¸é¿¡ png, test Æú´õ »ý¼º"
+    Write-Output "[+] ë°”íƒ•í™”ë©´ì— png, test í´ë” ìƒì„±"
     New-Item %SYSTEMDRIVE%\linked -type directory -Force
     New-Item %USERPROFILE%\Desktop\png -type directory -Force
     New-Item %USERPROFILE%\Desktop\test -type directory -Force
 }
 
 function ENV_VAR_REGISTER{
-    Write-Output "[+] linked È¯°æº¯¼ö(%path%) µî·Ï" #issue19
-    $add_path = write-debug $env:systemdrive"\linked;"$env:systemdrive"\linked\for_my\lnk;"$env:systemdrive"\linked\for_intranet\lnk"
+    Write-Output "[+] linked í™˜ê²½ë³€ìˆ˜(%path%) ë“±ë¡" #issue19
+    $add_path = write-Output $env:systemdrive"\linked;"$env:systemdrive"\linked\for_my\lnk;"$env:systemdrive"\linked\for_intranet\lnk"
     $curr_path = @([Environment]::GetEnvironmentVariable("Path", "Machine")) -split ";" #$curr_path = @($env:Path) -split ";"    
     if ($curr_path -contains $env:ur0n2 -and $env:ur0n2 -contains $add_path){
         Write-Output "`"ur0n2`" Environment Variable is already exist"
@@ -19,34 +19,34 @@ function ENV_VAR_REGISTER{
         [Environment]::SetEnvironmentVariable("ur0n2", $add_path, "Machine")
         [Environment]::GetEnvironmentVariable("ur0n2", "Machine")
         [Environment]::GetEnvironmentVariable("Path", "Machine")
-        [Environment]::SetEnvironmentVariable("Path", $env:Path + $env:ur0n2, "Machine")
+        [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [Environment]::GetEnvironmentVariable("ur0n2", "Machine"), "Machine")
         [Environment]::GetEnvironmentVariable("Path", "Machine") #$env:path is current powershell session, therefore different [Environ~]::GetEnv~ and $env:path. "[Environ~]::Get" is Dependency System Environment Variables
     }
 }
 
  function FAVORITE_COPY{
-    Write-Output "[+] Áñ°ÜÃ£±â ¹Ù·Î°¡±â º¹»ç"
+    Write-Output "[+] ì¦ê²¨ì°¾ê¸° ë°”ë¡œê°€ê¸° ë³µì‚¬"
     Copy-Item -path .\favorite\* -destination $env:userprofile\links\ -recurse -force
     #Remove-Item $env:APPDATA\Microsoft\Windows\Recent\AutomaticDestinations\ -Force -Recurse
 }
 
 function LINKED_COPY{
-    Write-Output "[+] linked º¹»ç "
+    Write-Output "[+] linked ë³µì‚¬ "
     Copy-Item -path .\linked\* -destination $env:systemdrive\linked\ -recurse -force
 }
 
 function REGISTRY_DOSKY_REGISTER{
-    Write-Output "[+] registry, doskey µî·Ï"
+    Write-Output "[+] registry, doskey ë“±ë¡"
     regedit /S %SYSTEMDRIVE%\linked\for_my\executable_and_ini\putty_color_set.reg
     regedit /S %SYSTEMDRIVE%\linked\for_my\executable_and_ini\Doskey_Registry.reg
 }
 
 function STARTUP_REGISTER{
-    Write-Output "[+] startup µî·Ï(intranet-aal, pingpong, route, etc..)"
+    Write-Output "[+] startup ë“±ë¡(intranet-aal, pingpong, route, etc..)"
 }
 
 function PICPICK_SETTING{
-    Write-Output "[+] ÇÈÇÈ ¼³Á¤"
+    Write-Output "[+] í”½í”½ ì„¤ì •"
     Copy-Item -path .\picpick\* -destination $env:appdata\PicPick\ -recurse -force
     cd $env:appdata\PicPick\
     start .\make_picpick_ini.bat
@@ -86,12 +86,12 @@ function PICPICK_SETTING{
 }
 
 function HELP_MOD{
-    Write-Output "[+] help ¸ðµâ"
+    Write-Output "[+] help ëª¨ë“ˆ"
     #help
 }
 
 function SHELL_SENDTO_REGISTER{
-    Write-Output "[+] shell:sendto µî·Ï"
+    Write-Output "[+] shell:sendto ë“±ë¡"
 }
 
 function EXECUTIONPOLICY_RECOVERY{
@@ -110,8 +110,8 @@ PICPICK_SETTING
 HELP_MOD
 SHELL_SENDTO_REGISTER
 
-Write-Output "[+] ¾ÐÃàÆÄÀÏ È®ÀåÀÚ ¿¬°áÇÁ·Î±×·¥ 7zÀ¸·Î µî·Ï"
+Write-Output "[+] ì••ì¶•íŒŒì¼ í™•ìž¥ìž ì—°ê²°í”„ë¡œê·¸ëž¨ 7zìœ¼ë¡œ ë“±ë¡"
 COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL
 EXECUTIONPOLICY_RECOVERY
 
-#Read-Host 'Press Enter to continue¡¦' | Out-Null
+#Read-Host 'Press Enter to continueâ€¦' | Out-Null

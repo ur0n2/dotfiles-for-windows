@@ -1,4 +1,4 @@
-#dotfiles-for-windows
+﻿#dotfiles-for-windows
 #LeeJunHwan(ur0n2)
 
 function MAKE_DIR_FOR_DESKTOP{
@@ -52,7 +52,8 @@ function PICPICK_SETTING{
     start .\make_picpick_ini.bat
 }
 
-    Function COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER{
+Function COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER{
+    Write-Output "[+] 압축파일 확장자 연결프로그램 7z으로 등록"
     $ext_path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\"
     $compress_ext = @(".7z", ".XZ", ".BZIP2", ".GZIP", ".TAR", ".ZIP and WIM..AR", ".ARJ", ".CAB", ".CHM", ".CPIO", ".CramFS", ".DMG", ".EXT", ".FAT", ".GPT", ".HFS", ".IHEX", ".ISO", ".LZH", ".LZMA", ".MBR", ".MSI", ".NSIS", ".NTFS", ".QCOW2", ".RAR", ".RPM", ".SquashFS", ".UDF", ".UEFI", ".VDI", ".VHD", ".VMDK", ".WIM", ".XAR", ".Z")
     $ext_key = @("OpenWithProgids", "OpenWithList", "UserChoice")
@@ -93,6 +94,10 @@ function HELP_MOD{
 function SHELL_SENDTO_REGISTER{
     Write-Output "[+] shell:sendto 등록"
 }
+function FILE_PROTECTION_DISABLE{
+    Write-Output "[+] 파일 실행시 보안경고 해제"
+    gci $env:systemdrive\linked -Recurse | ForEach-Object{ Unblock-File $_.FullName}
+}
 
 function EXECUTIONPOLICY_RECOVERY{
     Set-Executionpolicy Restricted
@@ -109,9 +114,8 @@ STARTUP_REGISTER
 PICPICK_SETTING
 HELP_MOD
 SHELL_SENDTO_REGISTER
-
-Write-Output "[+] 압축파일 확장자 연결프로그램 7z으로 등록"
 COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL
+FILE_PROTECTION_DISABLE
 EXECUTIONPOLICY_RECOVERY
 
 #Read-Host 'Press Enter to continue…' | Out-Null

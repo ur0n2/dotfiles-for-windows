@@ -99,7 +99,18 @@ function SHELL_SENDTO_REGISTER{
 }
 function FILE_PROTECTION_DISABLE{
     Write-Output "[+] 파일 실행시 보안경고 해제"
-    gci $env:systemdrive\linked -Recurse | ForEach-Object{ Unblock-File $_.FullName}
+    if ($PSVersionTable.PSVersion.Major -eq 3) {
+        gci $env:systemdrive\linked -Recurse | ForEach-Object{ Unblock-File $_.FullName}
+    }
+    else{
+        #gci $env:systemdrive\linked -Recurse
+        #한줄로 ->
+        #gci .\7z1604-x64.exe | foreach{ $a="echo.>" + $.FullName + ":Zone.Identifier"}
+        #cmd /c $a
+        gci $env:systemdrive\linked -Recurse | foreach{ $a="echo.>" + $_.FullName + ":Zone.Identifier"; cmd /c $a}
+    }
+}
+
 }
 
 function EXECUTIONPOLICY_RECOVERY{

@@ -3,19 +3,22 @@
 
 function MAKE_DIR_FOR_DESKTOP{
     Write-Output "[+] 바탕화면에 png, test 폴더 생성"
-    New-Item %SYSTEMDRIVE%\linked -type directory -Force
-    New-Item %USERPROFILE%\Desktop\png -type directory -Force
-    New-Item %USERPROFILE%\Desktop\test -type directory -Force
+    New-Item $env:SYSTEMDRIVE\linked -type directory -Force
+    New-Item $env:USERPROFILE\Desktop\png -type directory -Force
+    New-Item $env:USERPROFILE\Desktop\test -type directory -Force
 }
 
 function ENV_VAR_REGISTER{
     Write-Output "[+] linked 환경변수(%path%) 등록" #issue19
-    $add_path = write-Output $env:systemdrive"\linked;"$env:systemdrive"\linked\for_my\lnk;"$env:systemdrive"\linked\for_intranet\lnk"
-    $curr_path = @([Environment]::GetEnvironmentVariable("Path", "Machine")) -split ";" #$curr_path = @($env:Path) -split ";"    
-    if ($curr_path -contains $env:ur0n2 -and $env:ur0n2 -contains $add_path){
+    $add_path = @(($env:systemdrive + "\linked;"), ($env:systemdrive + "\linked\for_my\lnk;"), ($env:systemdrive + "\linked\for_intranet\lnk"))
+    $curr_path_var = @([Environment]::GetEnvironmentVariable("Path", "Machine")) -split ";" #$curr_path_var = @($env:Path) -split ";"   
+    if ( [Environment]::GetEnvironmentVariable("ur0n2", "Machine") ){
+        if ($curr_path_var.Trim() -contains ([Environment]::GetEnvironmentVariable("ur0n2", "Machine") -split ";")[1].Trim()) { # -or ( ([Environment]::GetEnvironmentVariable("ur0n2", "Machine") -split ";").Trim() -contains $add_path[1]) ){
+            Write-Output "현재 path 변수에 ur0n2[1]값 포함"
+        }
         Write-Output "`"ur0n2`" Environment Variable is already exist"
-    }else{
-        
+    }
+    else{
         [Environment]::SetEnvironmentVariable("ur0n2", $add_path, "Machine")
         [Environment]::GetEnvironmentVariable("ur0n2", "Machine")
         [Environment]::GetEnvironmentVariable("Path", "Machine")
@@ -35,7 +38,7 @@ function LINKED_COPY{
     Copy-Item -path .\linked\* -destination $env:systemdrive\linked\ -recurse -force
 }
 
-function REGISTRY_DOSKY_REGISTER{
+function REGISTRY_DOSKY_REGISTER{ #convert powershell command
     Write-Output "[+] registry, doskey 등록"
     regedit /S %SYSTEMDRIVE%\linked\for_my\executable_and_ini\putty_color_set.reg
     regedit /S %SYSTEMDRIVE%\linked\for_my\executable_and_ini\Doskey_Registry.reg

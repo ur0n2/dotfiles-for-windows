@@ -111,7 +111,6 @@ function FILE_PROTECTION_DISABLE{
     }
 }
 
-}
 
 function EXECUTIONPOLICY_RECOVERY{
     Set-Executionpolicy Restricted

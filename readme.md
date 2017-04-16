@@ -8,11 +8,11 @@
 ## Getting Started
 * Required to UAC privilege.
 <pre><code>
-    powershell Start-Process powershell -Verb runas 
-    Set-Executionpolicy ByPass -Force
-    git clone https://github.com/ur0n2/dotfiles-for-windows.git
-    cd .\dotfiles-for-windows\
-    .\setup_ps.ps1
+        powershell Start-Process powershell -Verb runas 
+        Set-Executionpolicy ByPass -Force
+        git clone https://github.com/ur0n2/dotfiles-for-windows.git
+        cd .\dotfiles-for-windows\
+        .\setup_ps.ps1
 </code></pre>
 
 ### Windows RUN(Win + R)

@@ -29,7 +29,7 @@ CaptureType2=3
 ColorPickerMode=0
 SaveFormat=3
 EditorColorPaletteType=1
-FirstRun=4230
+FirstRun=4240
 CheckUpdate=0
 ShowCaptureBar=0
 UserDefined

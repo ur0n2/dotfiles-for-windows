@@ -9,11 +9,11 @@ function MAKE_DIR_FOR_DESKTOP{
 }
 
 function ENV_VAR_REGISTER{
-    Write-Output "[+] linked 환경변수(%path%) 등록" #issue19
+    Write-Output "[+] linked 환경변수(%path%) 등록" 
     $add_path = @(($env:systemdrive + "\linked;"), ($env:systemdrive + "\linked\for_my\lnk;"), ($env:systemdrive + "\linked\for_intranet\lnk"))
-    $curr_path_var = @([Environment]::GetEnvironmentVariable("Path", "Machine")) -split ";" #$curr_path_var = @($env:Path) -split ";"   
+    $curr_path_var = @([Environment]::GetEnvironmentVariable("Path", "Machine")) -split ";"   
     if ( [Environment]::GetEnvironmentVariable("ur0n2", "Machine") ){
-        if ($curr_path_var.Trim() -contains ([Environment]::GetEnvironmentVariable("ur0n2", "Machine") -split ";")[1].Trim()) { # -or ( ([Environment]::GetEnvironmentVariable("ur0n2", "Machine") -split ";").Trim() -contains $add_path[1]) ){
+        if ($curr_path_var.Trim() -contains ([Environment]::GetEnvironmentVariable("ur0n2", "Machine") -split ";")[1].Trim()) {
             Write-Output "현재 path 변수에 ur0n2[1]값 포함"
         }
         Write-Output "`"ur0n2`" Environment Variable is already exist"
@@ -23,20 +23,19 @@ function ENV_VAR_REGISTER{
         [Environment]::GetEnvironmentVariable("ur0n2", "Machine")
         [Environment]::GetEnvironmentVariable("Path", "Machine")
         [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + [Environment]::GetEnvironmentVariable("ur0n2", "Machine"), "Machine")
-        [Environment]::GetEnvironmentVariable("Path", "Machine") #$env:path is current powershell session, therefore different [Environ~]::GetEnv~ and $env:path. "[Environ~]::Get" is Dependency System Environment Variables
+        [Environment]::GetEnvironmentVariable("Path", "Machine") 
     }
 }
 
  function FAVORITE_COPY{
     Write-Output "[+] 즐겨찾기 바로가기 복사"
     Copy-Item -path .\favorite\* -destination $env:userprofile\links\ -recurse -force
-    #Remove-Item $env:APPDATA\Microsoft\Windows\Recent\AutomaticDestinations\ -Force -Recurse
 }
 
 
 function FAST_PUTTY_DOWNLOAD{
     $url = "https://raw.githubusercontent.com/ur0n2/Fast-PuTTY/master/Fast_PuTTY.py"
-    $output = ".\linked\for_my\executable_and_ini\Fast-PuTTY.py"
+    $output = ".\linked\for_my\executable_and_ini\Fast_PuTTY.py"
     Invoke-WebRequest -Uri $url -OutFile $output
 }
 
@@ -46,7 +45,7 @@ function LINKED_COPY{
     Copy-Item -path .\linked\* -destination $env:systemdrive\linked\ -recurse -force
 }
 
-function REGISTRY_DOSKY_REGISTER{ #convert powershell command
+function REGISTRY_DOSKEY_REGISTER{
     Write-Output "[+] registry, doskey 등록"
     $arg_path = "import $env:systemdrive\linked\for_my\executable_and_ini\"
     $arg_reg = @("putty_color_set.reg", "Doskey_Registry.reg")
@@ -114,10 +113,6 @@ function FILE_PROTECTION_DISABLE{
         gci $env:systemdrive\linked -Recurse | ForEach-Object{ Unblock-File $_.FullName}
     }
     else{
-        #gci $env:systemdrive\linked -Recurse
-        #한줄로 ->
-        #gci .\7z1604-x64.exe | foreach{ $a="echo.>" + $.FullName + ":Zone.Identifier"}
-        #cmd /c $a
         gci $env:systemdrive\linked -Recurse | foreach{ $a="echo.>" + $_.FullName + ":Zone.Identifier"; cmd /c $a}
     }
 }
@@ -152,12 +147,12 @@ function MAIN{
                 FAVORITE_COPY
                 FAST_PUTTY_DOWNLOAD
                 LINKED_COPY
-                REGISTRY_DOSKY_REGISTER
                 STARTUP_REGISTER
                 PICPICK_SETTING
                 HELP_MOD
                 SHELL_SENDTO_REGISTER
                 COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL
+                REGISTRY_DOSKEY_REGISTER
                 FILE_PROTECTION_DISABLE
                 EXECUTIONPOLICY_RECOVERY
                 }
@@ -166,7 +161,7 @@ function MAIN{
             "4" {FAVORITE_COPY}
             "5" {FAST_PUTTY_DOWNLOAD}
             "6" {LINKED_COPY}
-            "7" {REGISTRY_DOSKY_REGISTER}
+            "7" {REGISTRY_DOSKEY_REGISTER}
             "8" {STARTUP_REGISTER}
             "9" {PICPICK_SETTING}
             "10" {HELP_MOD}

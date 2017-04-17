@@ -7,7 +7,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\Default%20Settings]
 "Present"=dword:00000001
-"HostName"="192.168.4.13"
+"HostName"=""
 "LogFileName"="putty.log"
 "LogType"=dword:00000000
 "LogFileClash"=dword:ffffffff
@@ -15,7 +15,7 @@ Windows Registry Editor Version 5.00
 "SSHLogOmitPasswords"=dword:00000001
 "SSHLogOmitData"=dword:00000000
 "Protocol"="ssh"
-"PortNumber"=dword:0000c366
+"PortNumber"=dword:00000016
 "CloseOnExit"=dword:00000001
 "WarnOnClose"=dword:00000000
 "PingInterval"=dword:00000000

@@ -40,8 +40,11 @@ function LINKED_COPY{
 
 function REGISTRY_DOSKY_REGISTER{ #convert powershell command
     Write-Output "[+] registry, doskey 등록"
-    regedit /S %SYSTEMDRIVE%\linked\for_my\executable_and_ini\putty_color_set.reg
-    regedit /S %SYSTEMDRIVE%\linked\for_my\executable_and_ini\Doskey_Registry.reg
+    $arg_path = "import $env:systemdrive\linked\for_my\executable_and_ini\"
+    $arg_reg = @("putty_color_set.reg", "Doskey_Registry.reg")
+
+    Start-Process reg ($arg_path + $arg_reg[0])
+    Start-Process reg ($arg_path + $arg_reg[1])
 }
 
 function STARTUP_REGISTER{
@@ -58,28 +61,28 @@ function PICPICK_SETTING{
 Function COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER{
     Write-Output "[+] 압축파일 확장자 연결프로그램 7z으로 등록"
     $ext_path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\"
-    $compress_ext = @(".7z", ".XZ", ".BZIP2", ".GZIP", ".TAR", ".ZIP and WIM..AR", ".ARJ", ".CAB", ".CHM", ".CPIO", ".CramFS", ".DMG", ".EXT", ".FAT", ".GPT", ".HFS", ".IHEX", ".ISO", ".LZH", ".LZMA", ".MBR", ".MSI", ".NSIS", ".NTFS", ".QCOW2", ".RAR", ".RPM", ".SquashFS", ".UDF", ".UEFI", ".VDI", ".VHD", ".VMDK", ".WIM", ".XAR", ".Z")
+    $compress_ext = @(".7z", ".XZ", ".BZIP2", ".GZIP", ".TAR", ".ZIP", ".ARJ", ".CAB", ".CHM", ".CPIO", ".CramFS", ".DMG", ".EXT", ".FAT", ".GPT", ".HFS", ".IHEX", ".ISO", ".LZH", ".LZMA", ".MBR", ".MSI", ".NSIS", ".NTFS", ".QCOW2", ".RAR", ".RPM", ".SquashFS", ".UDF", ".UEFI", ".VDI", ".VHD", ".VMDK", ".WIM", ".XAR", ".Z")
     $ext_key = @("OpenWithProgids", "OpenWithList", "UserChoice")
 
     $i = 0
     while($i -ne ($compress_ext.Length)){    
         $ext_key_add_path = $ext_path + $compress_ext.GetValue($i)
-        New-Item -Path $ext_key_add_path
+        New-Item -Path $ext_key_add_path | Out-NULL
         while($j -ne 3){
             $ext_full_path = $ext_path + $compress_ext.GetValue($i) + "\" + $ext_key.GetValue($j) + "\"
             #write-output $ext_full_path
-            New-Item -Path $ext_full_path
+            New-Item -Path $ext_full_path | Out-NULL
         
         
             if($j -eq 0){
-                New-ItemProperty -Path $ext_full_path -Name "CompressedFolder" -PropertyType Binary
+                New-ItemProperty -Path $ext_full_path -Name "CompressedFolder" -PropertyType Binary | Out-NULL
             }
             elseif($j -eq 1){
-                New-ItemProperty -Path $ext_full_path -Name "a" -PropertyType String -Value "7zFM.exe" | Out-NUL
-                New-ItemProperty -Path $ext_full_path -Name "MRUList" -PropertyType String -Value "a"
+                New-ItemProperty -Path $ext_full_path -Name "a" -PropertyType String -Value "7zFM.exe" | Out-NULL
+                New-ItemProperty -Path $ext_full_path -Name "MRUList" -PropertyType String -Value "a" | Out-NULL
             }
             elseif($j -eq 2){
-                New-ItemProperty -Path $ext_full_path -Name "Progid" -PropertyType String -Value "Applications\7zFM.exe"
+                New-ItemProperty -Path $ext_full_path -Name "Progid" -PropertyType String -Value "Applications\7zFM.exe" | Out-NULL
             }
             $j++
         }
@@ -116,8 +119,8 @@ function EXECUTIONPOLICY_RECOVERY{
     Set-Executionpolicy Restricted
 }
 
-
-
+COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER
+<#
 MAKE_DIR_FOR_DESKTOP
 ENV_VAR_REGISTER
 FAVORITE_COPY
@@ -130,5 +133,5 @@ SHELL_SENDTO_REGISTER
 COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL
 FILE_PROTECTION_DISABLE
 EXECUTIONPOLICY_RECOVERY
-
+#>
 #Read-Host 'Press Enter to continue…' | Out-Null

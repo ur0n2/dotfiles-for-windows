@@ -33,6 +33,14 @@ function ENV_VAR_REGISTER{
     #Remove-Item $env:APPDATA\Microsoft\Windows\Recent\AutomaticDestinations\ -Force -Recurse
 }
 
+
+function FAST_PUTTY_DOWNLOAD{
+    $url = "https://raw.githubusercontent.com/ur0n2/Fast-PuTTY/master/Fast_PuTTY.py"
+    $output = ".\linked\for_my\executable_and_ini\Fast-PuTTY.py"
+    Invoke-WebRequest -Uri $url -OutFile $output
+}
+
+
 function LINKED_COPY{
     Write-Output "[+] linked 복사 "
     Copy-Item -path .\linked\* -destination $env:systemdrive\linked\ -recurse -force
@@ -119,19 +127,56 @@ function EXECUTIONPOLICY_RECOVERY{
     Set-Executionpolicy Restricted
 }
 
-COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER
-<#
-MAKE_DIR_FOR_DESKTOP
-ENV_VAR_REGISTER
-FAVORITE_COPY
-LINKED_COPY
-REGISTRY_DOSKY_REGISTER
-STARTUP_REGISTER
-PICPICK_SETTING
-HELP_MOD
-SHELL_SENDTO_REGISTER
-COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL
-FILE_PROTECTION_DISABLE
-EXECUTIONPOLICY_RECOVERY
-#>
-#Read-Host 'Press Enter to continue…' | Out-Null
+
+function MAIN{
+    while($true){
+        write-output "1. ALL"
+        write-output "2. MAKE_DIR_FOR_DESKTOP"
+        write-output "3. ENV_VAR_REGISTER"
+        write-output "4. FAVORITE_COPY"
+        write-output "5. FAST_PUTTY_DOWNLOAD"
+        write-output "6. LINKED_COPY"
+        write-output "7. REGISTRY_DOSKY_REGISTER"
+        write-output "8. STARTUP_REGISTER"
+        write-output "9. PICPICK_SETTING"
+        write-output "10. HELP_MOD"
+        write-output "11. SHELL_SENDTO_REGISTER"
+        write-output "12. COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL"
+        write-output "13. FILE_PROTECTION_DISABLE"
+        write-output "14. EXECUTIONPOLICY_RECOVERY"
+
+        $a = Read-Host -prompt "[+] Choise the menu: "
+
+        switch($a){"1" {MAKE_DIR_FOR_DESKTOP
+                ENV_VAR_REGISTER
+                FAVORITE_COPY
+                FAST_PUTTY_DOWNLOAD
+                LINKED_COPY
+                REGISTRY_DOSKY_REGISTER
+                STARTUP_REGISTER
+                PICPICK_SETTING
+                HELP_MOD
+                SHELL_SENDTO_REGISTER
+                COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL
+                FILE_PROTECTION_DISABLE
+                EXECUTIONPOLICY_RECOVERY
+                }
+            "2" {MAKE_DIR_FOR_DESKTOP}
+            "3" {ENV_VAR_REGISTER}
+            "4" {FAVORITE_COPY}
+            "5" {FAST_PUTTY_DOWNLOAD}
+            "6" {LINKED_COPY}
+            "7" {REGISTRY_DOSKY_REGISTER}
+            "8" {STARTUP_REGISTER}
+            "9" {PICPICK_SETTING}
+            "10" {HELP_MOD}
+            "11" {SHELL_SENDTO_REGISTER}
+            "12" {COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL}
+            "13" {FILE_PROTECTION_DISABLE}
+            "14" {EXECUTIONPOLICY_RECOVERY}
+            default {"`r`n[+] rechoice`r`n"}
+        }
+    }
+}
+
+MAIN

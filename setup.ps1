@@ -33,10 +33,16 @@ function ENV_VAR_REGISTER{
 }
 
 
-function FAST_PUTTY_DOWNLOAD{
+function TOOL_DOWNLOAD_AT_GITHUB{
     $url = "https://raw.githubusercontent.com/ur0n2/Fast-PuTTY/master/Fast_PuTTY.py"
     $output = ".\linked\for_my\executable_and_ini\Fast_PuTTY.py"
     Invoke-WebRequest -Uri $url -OutFile $output
+
+    $url = "https://raw.githubusercontent.com/ur0n2/evernote-wrapper/master/ev.py"
+    $output = ".\linked\for_my\executable_and_ini\ev.py"
+    Invoke-WebRequest -Uri $url -OutFile $output
+
+
 }
 
 
@@ -129,7 +135,7 @@ function MAIN{
         write-output "2. MAKE_DIR_FOR_DESKTOP"
         write-output "3. ENV_VAR_REGISTER"
         write-output "4. FAVORITE_COPY"
-        write-output "5. FAST_PUTTY_DOWNLOAD"
+        write-output "5. TOOL_DOWNLOAD_AT_GITHUB"
         write-output "6. LINKED_COPY"
         write-output "7. REGISTRY_DOSKY_REGISTER"
         write-output "8. STARTUP_REGISTER"
@@ -145,7 +151,7 @@ function MAIN{
         switch($a){"1" {MAKE_DIR_FOR_DESKTOP
                 ENV_VAR_REGISTER
                 FAVORITE_COPY
-                FAST_PUTTY_DOWNLOAD
+                TOOL_DOWNLOAD_AT_GITHUB
                 LINKED_COPY
                 STARTUP_REGISTER
                 PICPICK_SETTING
@@ -159,7 +165,7 @@ function MAIN{
             "2" {MAKE_DIR_FOR_DESKTOP}
             "3" {ENV_VAR_REGISTER}
             "4" {FAVORITE_COPY}
-            "5" {FAST_PUTTY_DOWNLOAD}
+            "5" {TOOL_DOWNLOAD_AT_GITHUB}
             "6" {LINKED_COPY}
             "7" {REGISTRY_DOSKEY_REGISTER}
             "8" {STARTUP_REGISTER}

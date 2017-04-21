@@ -1,14 +1,14 @@
 ﻿#dotfiles-for-windows
 #LeeJunHwan(ur0n2)
 
-function MAKE_DIR_FOR_DESKTOP{
+function DFW_MAKE_DIR_AT_DESKTOP{
     Write-Output "[+] 바탕화면에 png, test 폴더 생성"
     New-Item $env:SYSTEMDRIVE\linked -type directory -Force
     New-Item $env:USERPROFILE\Desktop\png -type directory -Force
     New-Item $env:USERPROFILE\Desktop\test -type directory -Force
 }
 
-function ENV_VAR_REGISTER{
+function DFW_ENV_VAR_REGISTER{
     Write-Output "[+] linked 환경변수(%path%) 등록" 
     $add_path = @(($env:systemdrive + "\linked;"), ($env:systemdrive + "\linked\for_my\lnk;"), ($env:systemdrive + "\linked\for_intranet\lnk"))
     $curr_path_var = @([Environment]::GetEnvironmentVariable("Path", "Machine")) -split ";"   
@@ -27,13 +27,13 @@ function ENV_VAR_REGISTER{
     }
 }
 
- function FAVORITE_COPY{
+function DFW_FAVORITE_COPY{
     Write-Output "[+] 즐겨찾기 바로가기 복사"
     Copy-Item -path .\favorite\* -destination $env:userprofile\links\ -recurse -force
 }
 
-
-function TOOL_DOWNLOAD_AT_GITHUB{
+function DFW_TOOL_DOWNLOAD_AT_GITHUB{
+    Write-Output "[+] 내 Github Repository에서 Tool 다운로드"
     $url = "https://raw.githubusercontent.com/ur0n2/Fast-PuTTY/master/Fast_PuTTY.py"
     $output = ".\linked\for_my\executable_and_ini\Fast_PuTTY.py"
     Invoke-WebRequest -Uri $url -OutFile $output
@@ -41,18 +41,15 @@ function TOOL_DOWNLOAD_AT_GITHUB{
     $url = "https://raw.githubusercontent.com/ur0n2/evernote-wrapper/master/ev.py"
     $output = ".\linked\for_my\executable_and_ini\ev.py"
     Invoke-WebRequest -Uri $url -OutFile $output
-
-
 }
 
-
-function LINKED_COPY{
+function DFW_LINKED_COPY{
     Write-Output "[+] linked 복사 "
     Copy-Item -path .\linked\* -destination $env:systemdrive\linked\ -recurse -force
 }
 
-function REGISTRY_DOSKEY_REGISTER{
-    Write-Output "[+] registry, doskey 등록"
+function DFW_REGISTRY_REGISTER{
+    Write-Output "[+] Registry 등록"
     $arg_path = "import $env:systemdrive\linked\for_my\executable_and_ini\"
     $arg_reg = @("putty_color_set.reg", "Doskey_Registry.reg")
 
@@ -60,18 +57,18 @@ function REGISTRY_DOSKEY_REGISTER{
     Start-Process reg ($arg_path + $arg_reg[1])
 }
 
-function STARTUP_REGISTER{
+function DFW_STARTUP_REGISTER{
     Write-Output "[+] startup 등록(intranet-aal, pingpong, route, etc..)"
 }
 
-function PICPICK_SETTING{
+function DFW_PICPICK_SETTING{
     Write-Output "[+] 픽픽 설정"
     Copy-Item -path .\picpick\* -destination $env:appdata\PicPick\ -recurse -force
     cd $env:appdata\PicPick\
     start .\make_picpick_ini.bat
 }
 
-Function COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER{
+Function DFW_COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER{
     Write-Output "[+] 압축파일 확장자 연결프로그램 7z으로 등록"
     $ext_path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\"
     $compress_ext = @(".7z", ".XZ", ".BZIP2", ".GZIP", ".TAR", ".ZIP", ".ARJ", ".CAB", ".CHM", ".CPIO", ".CramFS", ".DMG", ".EXT", ".FAT", ".GPT", ".HFS", ".IHEX", ".ISO", ".LZH", ".LZMA", ".MBR", ".MSI", ".NSIS", ".NTFS", ".QCOW2", ".RAR", ".RPM", ".SquashFS", ".UDF", ".UEFI", ".VDI", ".VHD", ".VMDK", ".WIM", ".XAR", ".Z")
@@ -105,76 +102,84 @@ Function COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER{
     }
 }
 
-function HELP_MOD{
+function DFW_HELP_MOD{
     Write-Output "[+] help 모듈"
     #help
 }
 
-function SHELL_SENDTO_REGISTER{
+function DFW_SHELL_SENDTO_REGISTER{
     Write-Output "[+] shell:sendto 등록"
 }
-function FILE_PROTECTION_DISABLE{
+
+function DFW_FILE_PROTECTION_DISABLE{
     Write-Output "[+] 파일 실행시 보안경고 해제"
     if ($PSVersionTable.PSVersion.Major -eq 3) {
         gci $env:systemdrive\linked -Recurse | ForEach-Object{ Unblock-File $_.FullName}
     }
     else{
-        gci $env:systemdrive\linked -Recurse | foreach{ $a="echo.>" + $_.FullName + ":Zone.Identifier"; cmd /c $a}
+        gci $env:systemdrive\linked -Recurse | foreach{ $a="echo.>" + $_.FullName + ":Zone.Identifier"; cmd /c $a} | Out-Null
     }
 }
 
-
-function EXECUTIONPOLICY_RECOVERY{
+function DFW_EXECUTIONPOLICY_RECOVERY{
+    Write-Output "[+] Powershell 실행 정책 복구"
     Set-Executionpolicy Restricted
 }
+    
+function MAIN{   
+    $fnlist =  @(Get-ChildItem function:DFW* | Select Name ) #DFW_ is Function prefix for UDF listing
 
-
-function MAIN{
     while($true){
-        write-output "1. ALL"
-        write-output "2. MAKE_DIR_FOR_DESKTOP"
+        write-output "0. Exit"
+        write-output "1. ALL-Install"
+        write-output "2. MAKE_DIR_AT_DESKTOP"
         write-output "3. ENV_VAR_REGISTER"
-        write-output "4. FAVORITE_COPY"
+        Write-output "4. FAVORITE_COPY"
         write-output "5. TOOL_DOWNLOAD_AT_GITHUB"
         write-output "6. LINKED_COPY"
         write-output "7. REGISTRY_DOSKY_REGISTER"
         write-output "8. STARTUP_REGISTER"
         write-output "9. PICPICK_SETTING"
-        write-output "10. HELP_MOD"
-        write-output "11. SHELL_SENDTO_REGISTER"
-        write-output "12. COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL"
+        write-output "10. COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER"
+        write-output "11. HELP_MOD"
+        write-output "12. SHELL_SENDTO_REGISTER"
         write-output "13. FILE_PROTECTION_DISABLE"
         write-output "14. EXECUTIONPOLICY_RECOVERY"
+        write-output "15. MAKE_DIR_AT_DESKTOP"
+        write-output "16. REGISTRY_REGISTER"
 
         $a = Read-Host -prompt "[+] Choise the menu: "
 
-        switch($a){"1" {MAKE_DIR_FOR_DESKTOP
-                ENV_VAR_REGISTER
-                FAVORITE_COPY
-                TOOL_DOWNLOAD_AT_GITHUB
-                LINKED_COPY
-                STARTUP_REGISTER
-                PICPICK_SETTING
-                HELP_MOD
-                SHELL_SENDTO_REGISTER
-                COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL
-                REGISTRY_DOSKEY_REGISTER
-                FILE_PROTECTION_DISABLE
-                EXECUTIONPOLICY_RECOVERY
+        switch($a){
+            "0" {exit}
+            "1" {
+                    DFW_MAKE_DIR_AT_DESKTOP
+                    DFW_ENV_VAR_REGISTER
+                    DFW_FAVORITE_COPY
+                    DFW_TOOL_DOWNLOAD_AT_GITHUB
+                    DFW_LINKED_COPY
+                    DFW_REGISTRY_REGISTER
+                    DFW_STARTUP_REGISTER
+                    DFW_PICPICK_SETTING
+                    DFW_COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER
+                    DFW_HELP_MOD
+                    DFW_SHELL_SENDTO_REGISTER
+                    DFW_FILE_PROTECTION_DISABLE
+                    DFW_EXECUTIONPOLICY_RECOVERY
                 }
-            "2" {MAKE_DIR_FOR_DESKTOP}
-            "3" {ENV_VAR_REGISTER}
-            "4" {FAVORITE_COPY}
-            "5" {TOOL_DOWNLOAD_AT_GITHUB}
-            "6" {LINKED_COPY}
-            "7" {REGISTRY_DOSKEY_REGISTER}
-            "8" {STARTUP_REGISTER}
-            "9" {PICPICK_SETTING}
-            "10" {HELP_MOD}
-            "11" {SHELL_SENDTO_REGISTER}
-            "12" {COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER 2> $NULL}
-            "13" {FILE_PROTECTION_DISABLE}
-            "14" {EXECUTIONPOLICY_RECOVERY}
+            "2" {DFW_MAKE_DIR_AT_DESKTOP}
+            "3" {DFW_ENV_VAR_REGISTER}
+            "4" {DFW_FAVORITE_COPY}
+            "5" {DFW_TOOL_DOWNLOAD_AT_GITHUB}
+            "6" {DFW_LINKED_COPY}
+            "7" {DFW_REGISTRY_REGISTER}
+            "8" {DFW_STARTUP_REGISTER}
+            "9" {DFW_PICPICK_SETTING}
+            "10" {DFW_COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER}
+            "11" {DFW_HELP_MOD}
+            "12" {DFW_SHELL_SENDTO_REGISTER}
+            "13" {DFW_FILE_PROTECTION_DISABLE}
+            "14" {DFW_EXECUTIONPOLICY_RECOVERY}
             default {"`r`n[+] rechoice`r`n"}
         }
     }

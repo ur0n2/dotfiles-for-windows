@@ -10,6 +10,7 @@
 
 *Getting Started*
 ----------
+
 - Required to UAC privilege.
 <pre><code>> powershell Start-Process powershell -Verb runas 
 > Set-Executionpolicy ByPass -Force
@@ -26,24 +27,39 @@
 ----------
 #### PicPick Hotkey
 - PickPick is capture program. png folder 
-- Alt + 1: 선택 영역 
-- Alt + 2
-- Alt + 3
-- Alt + 4
-- Alt + F1
+- Alt + 1: 영역을 지정하여 캡처
+- Alt + 2: 활성화된 윈도우 캡처
+- Alt + 3: 고정된 사각 영역 캡처
+- Alt + 4: 픽픽 에디터 열기
+- Alt + F1: 마지막 캡처 영역 반복
 
 #### Naver Dictionary
 - Used to Naver Dictionary
+```
+> dn.py APPLE
+> dn.py #paramater pass of the clipboard contents.
+```
 
 #### Core Dictionary
 - Used to Core Dictionary
+```
+> dc.py compliance
+> dc.py #paramater pass of the clipboard contents.
+```
 
 #### Google Translator
 - Used to Google Translator
+```
+> tr.py paramater pass of the clipboard contents
+> tr.py #paramater pass of the clipboard contents.
+```
 
 #### Fast Putty(https://github.com/ur0n2/Fast-Putty)
 - With pretty color set and configuration set.
-
+```
+> pt.py -wrt 21 
+> pt.py #connect to default server.
+```
 #### Fast WinSCP
 - like a Fast-Putty
 
@@ -67,13 +83,13 @@ doskey clear = cls
 
 #### bb.bat / rb.bat
 ```
-bb.bat: Immediately shutdown the system.
-rb.bat: Immediately reboot to  system.
+> bb.bat: Immediately shutdown the system.
+> rb.bat: Immediately reboot to  system.
 ```
 
 #### tc.bat
 ```
-tc.bat: Recycle Bin(Trash Clean) clear.
+> tc.bat: Recycle Bin(Trash Clean) clear.
 ```
 
 *License*

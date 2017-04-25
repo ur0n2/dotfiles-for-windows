@@ -137,7 +137,7 @@ function MAIN{
         Write-output "4. FAVORITE_COPY"
         write-output "5. TOOL_DOWNLOAD_AT_GITHUB"
         write-output "6. LINKED_COPY"
-        write-output "7. REGISTRY_DOSKY_REGISTER"
+        write-output "7. REGISTRY_DOSKEY_REGISTER"
         write-output "8. STARTUP_REGISTER"
         write-output "9. PICPICK_SETTING"
         write-output "10. COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER"

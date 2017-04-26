@@ -18,7 +18,7 @@ doskey ifconfig = ipconfig
 doskey . = cd ..
 doskey .. = cd ../..
 doskey clear = cls
-doskey serve = cmd /k "start /B & cd c:\ & python -mSimpleHTTPServer"
+doskey serve = "cmd /k python -mSimpleHTTPServer"
 
 @echo -----------------------------------------------------------------------------
 @echo [+]       doskey ls = dir /W /P $*        

@@ -119,5 +119,9 @@ servedw
 - MS-LPL License
 
 
+## Author
+- by ur0n2 [:house_with_garden:](https://ur0n2.com) [:octocat:](https://github.com/ur0n2)
+
+
 ## License
 [MIT License](https://github.com/ur0n2/dotfiles-for-windows/blob/master/LICENSE)

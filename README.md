@@ -16,7 +16,9 @@ cd .\dotfiles-for-windows\
 </code></pre>
 
 ### Windows RUN(Win + R)
-- ![](https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/winR.gif)
+
+![](https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/winR.png)
+
 - This is Super Key in Windows
 
 

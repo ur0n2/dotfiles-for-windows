@@ -163,8 +163,10 @@ Function DFW_COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER{
  }
 
 function DFW_HELP_MOD{
-    Write-Output "[+] help 모듈"
-    #help
+    Write-Output "[+] Help 모듈"
+
+    tree /f $env:systemdrive\linked 
+    start-process https://github.com/ur0n2/dotfiles-for-windows/blob/master/README.md
 }
 
 function DFW_SHELL_SENDTO_REGISTER{

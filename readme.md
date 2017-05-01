@@ -1,6 +1,6 @@
 **Dotfiles for Windows**
 ===================
-- If you're computer to formatted. As then, "dotfiles for windows" makes compact to environment for your computing performance. This is oriented a pure windows environment. In addtition, I recommending Powershell or Windows Bash Shell(from Windows 10 RS1)
+- If you're computer to formatted. As then, "dotfiles for windows" makes compact to environment for your computing performance. This is oriented a pure windows environment. In addtition, I recommending Powershell or Windows Bash Shell(from Windows 10)
 - You can used to windows super key that is "Win + R"
 - You can used in intranet. For example, route command, intranet auto login, messenger and etc.
 - Make use of anything for Portable Windows UX
@@ -12,11 +12,11 @@
 ----------
 
 - Required to UAC privilege.
-<pre><code>> powershell Start-Process powershell -Verb runas 
-> Set-Executionpolicy ByPass -Force
-> git clone https://github.com/ur0n2/dotfiles-for-windows.git
-> cd .\dotfiles-for-windows\
-> .\setup_ps.ps1
+<pre><code>powershell Start-Process powershell -Verb runas 
+Set-Executionpolicy ByPass -Force
+git clone https://github.com/ur0n2/dotfiles-for-windows.git
+cd .\dotfiles-for-windows\
+.\setup_ps.ps1
 </code></pre>
 
 #### Windows RUN(Win + R)
@@ -35,36 +35,43 @@
 
 #### Naver Dictionary
 - Used to Naver Dictionary
+- If omissionned of argument, just clipboard contents pass to argument.
 ```
-> dn.py APPLE
-> dn.py #paramater pass of the clipboard contents.
+dn
+dn APPLE
 ```
 
 #### Core Dictionary
 - Used to Core Dictionary
+- If omissionned of argument, just clipboard contents pass to argument.
 ```
-> dc.py compliance
-> dc.py #paramater pass of the clipboard contents.
+dc
+dc compliance
 ```
 
 #### Google Translator
 - Used to Google Translator
+- If omissionned of argument, just clipboard contents pass to argument.
 ```
-> tr.py paramater pass of the clipboard contents
-> tr.py #paramater pass of the clipboard contents.
+tr
+tr paramater pass of the clipboard contents
 ```
 
 #### Fast Putty(https://github.com/ur0n2/Fast-Putty)
 - With pretty color set and configuration set.
+- If omissionned of argument, just connect to default server.
 ```
-> pt.py -wrt 21 
-> pt.py #connect to default server.
+pt
+pt -wrt 21 
 ```
+
+
 #### Fast WinSCP
 - like a Fast-Putty
 
 #### Doskey Alias
 - Doskey alias setting like a linux environment in cmd.exe
+- You can get the doskey alias list that is "doskey /MACROS" command.
 ```
 doskey ls = dir /W /P $*
 doskey l = dir $*
@@ -79,18 +86,38 @@ doskey ifconfig = ipconfig
 doskey . = cd ..
 doskey .. = cd ../..
 doskey clear = cls
+doskey serve = "cmd /k python -mSimpleHTTPServer"
 ```
 
 #### bb.bat / rb.bat
+bb: Immediately shutdown the system.
+rb: Immediately reboot to  system.
 ```
-> bb.bat: Immediately shutdown the system.
-> rb.bat: Immediately reboot to  system.
+bb
+rb
 ```
 
 #### tc.bat
+Recycle Bin(Trash Clean) clear.
 ```
-> tc.bat: Recycle Bin(Trash Clean) clear.
+tc
 ```
+
+#### serve*
+- 'servec' is serving 'C drive'.
+- 'served' is serving 'D drive'.
+- 'servedw' is serving 'Downloads' directory.
+```
+servec
+served
+servedw
+```
+
+#### Powershell ISE Theme
+- Select-ISETheme
+- MS-LPL License
+
+
 
 *License*
 -------------------

@@ -3,7 +3,6 @@
 
 function DFW_MAKE_DIR_AT_DESKTOP{
     Write-Output "[+] 바탕화면에 png, test 폴더 생성"
-    New-Item $env:SYSTEMDRIVE\linked -type directory -Force
     New-Item $env:USERPROFILE\Desktop\png -type directory -Force
     New-Item $env:USERPROFILE\Desktop\test -type directory -Force
 }
@@ -32,8 +31,9 @@ function DFW_FAVORITE_COPY{
     Copy-Item -path .\favorite\* -destination $env:userprofile\links\ -recurse -force
 }
 
-function DFW_TOOL_DOWNLOAD_AT_GITHUB{
-    Write-Output "[+] 내 Github Repository에서 Tool 다운로드"
+function DFW_DOWNLOAD_TO_WEB{
+    Write-Output "[+] 내 Github Repository, MS Technet에서 자료 다운로드"
+
     $url = "https://raw.githubusercontent.com/ur0n2/Fast-PuTTY/master/Fast_PuTTY.py"
     $output = ".\linked\for_my\executable_and_ini\Fast_PuTTY.py"
     Invoke-WebRequest -Uri $url -OutFile $output
@@ -41,6 +41,12 @@ function DFW_TOOL_DOWNLOAD_AT_GITHUB{
     $url = "https://raw.githubusercontent.com/ur0n2/evernote-wrapper/master/ev.py"
     $output = ".\linked\for_my\executable_and_ini\ev.py"
     Invoke-WebRequest -Uri $url -OutFile $output
+    
+    #$url = "https://gallery.technet.microsoft.com/ISE-Color-Theme-Cmdlets-24905f9e/file/113950/1/ISEColorThemeCmdlets.ps1"
+    #$output = ".\linked\for_my\executable_and_ini\ISEColorThemeCmdlets.ps1"
+    #Invoke-WebRequest -Uri $url -OutFile $output
+
+    #계속 늘어나면 그때 '/'로 split해서 $output+=$url[-1]로 $url을 iterator 돌리기
 }
 
 function DFW_LINKED_COPY{
@@ -71,7 +77,7 @@ function DFW_PICPICK_SETTING{
 Function DFW_COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER{
     Write-Output "[+] 압축파일 확장자 연결프로그램 7z으로 등록"
     $ext_path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\"
-    $compress_ext = @(".7z", ".XZ", ".BZIP2", ".GZIP", ".TAR", ".ZIP", ".ARJ", ".CAB", ".CHM", ".CPIO", ".CramFS", ".DMG", ".EXT", ".FAT", ".GPT", ".HFS", ".IHEX", ".ISO", ".LZH", ".LZMA", ".MBR", ".MSI", ".NSIS", ".NTFS", ".QCOW2", ".RAR", ".RPM", ".SquashFS", ".UDF", ".UEFI", ".VDI", ".VHD", ".VMDK", ".WIM", ".XAR", ".Z")
+    $compress_ext = @(".7z", ".XZ", ".BZIP2", ".GZIP", ".TAR", ".ZIP", ".ARJ", ".CPIO", ".CramFS", ".EXT", ".FAT", ".GPT", ".HFS", ".IHEX", ".ISO", ".LZH", ".LZMA", ".MBR", ".NTFS", ".QCOW2", ".RAR", ".RPM", ".SquashFS", ".UDF", ".UEFI", ".WIM", ".XAR", ".Z")
     $ext_key = @("OpenWithProgids", "OpenWithList", "UserChoice")
 
     $i = 0
@@ -125,6 +131,17 @@ function DFW_EXECUTIONPOLICY_RECOVERY{
     Write-Output "[+] Powershell 실행 정책 복구"
     Set-Executionpolicy Restricted
 }
+
+function DFW_POSH_ISE_THEME_ADD{
+    Write-Output "[+] Powershell ISE 테마 추가"
+    
+    #Set-Executionpolicy ByPass -Force
+    powershell $env:systemdrive\linked\for_my\executable_and_ini\ISEColorThemeCmdlets.ps1
+    
+    $ThemeList = Get-ChildItem -Path $env:systemdrive\linked\for_my\executable_and_ini -Recurse -File -Include *.ps1xml
+    $ThemeList | Import-ISETheme
+    Set-Isetheme -ThemeName "Monokai"
+}
     
 function MAIN{   
     $fnlist =  @(Get-ChildItem function:DFW* | Select Name ) #DFW_ is Function prefix for UDF listing
@@ -135,7 +152,7 @@ function MAIN{
         write-output "2. MAKE_DIR_AT_DESKTOP"
         write-output "3. ENV_VAR_REGISTER"
         Write-output "4. FAVORITE_COPY"
-        write-output "5. TOOL_DOWNLOAD_AT_GITHUB"
+        write-output "5. DFW_DOWNLOAD_TO_WEB"
         write-output "6. LINKED_COPY"
         write-output "7. REGISTRY_DOSKEY_REGISTER"
         write-output "8. STARTUP_REGISTER"
@@ -156,7 +173,7 @@ function MAIN{
                     DFW_MAKE_DIR_AT_DESKTOP
                     DFW_ENV_VAR_REGISTER
                     DFW_FAVORITE_COPY
-                    DFW_TOOL_DOWNLOAD_AT_GITHUB
+                    DFW_DFW_DOWNLOAD_TO_WEB
                     DFW_LINKED_COPY
                     DFW_REGISTRY_REGISTER
                     DFW_STARTUP_REGISTER
@@ -170,7 +187,7 @@ function MAIN{
             "2" {DFW_MAKE_DIR_AT_DESKTOP}
             "3" {DFW_ENV_VAR_REGISTER}
             "4" {DFW_FAVORITE_COPY}
-            "5" {DFW_TOOL_DOWNLOAD_AT_GITHUB}
+            "5" {DFW_DFW_DOWNLOAD_TO_WEB}
             "6" {DFW_LINKED_COPY}
             "7" {DFW_REGISTRY_REGISTER}
             "8" {DFW_STARTUP_REGISTER}

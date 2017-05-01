@@ -4,8 +4,8 @@
 function DFW_MAKE_DIR_AT_DESKTOP{
     Write-Output "[+] 바탕화면에 png, test 폴더 생성"
     
-    New-Item $env:USERPROFILE\Desktop\png -type directory -Force
-    New-Item $env:USERPROFILE\Desktop\test -type directory -Force
+    New-Item $env:USERPROFILE\Desktop\png -type directory -Force | Out-Null
+    New-Item $env:USERPROFILE\Desktop\test -type directory -Force | Out-Null
 }
 
 function DFW_ENV_VAR_REGISTER{
@@ -102,9 +102,10 @@ function DFW_PICPICK_SETTING{
 
     $src = ".\picpick\*"
     $dest = "$env:appdata\PicPick\"
+    $make_ini = $dest + "make_picpick_ini.bat"
+
     Copy-Item -path $src -destination $dest -recurse -force
-    cd $dest
-    start .\make_picpick_ini.bat
+    start $make_ini
 }
 
 Function DFW_COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER{
@@ -132,7 +133,8 @@ Function DFW_COMPRESS_EXTENSION_LINK_TO_7Z_REGISTER{
     #무조건 확장자 연결 덮어씌우는거라서 no matter what i don't care about error.
     #혹은 함수명 2> $null 보기 안좋음
 
-    $i = 0
+    $i=0
+    $j=0
     while($i -ne ($compress_ext.Length)){ #압축관 확장자 조회
         $ext_reg_key_add_path = $ext_reg_path + $compress_ext.GetValue($i)
         if( (Test-Path $ext_reg_key_add_path) -eq $true){ #HKCU...의 최상위(ex:.zip)키가 존재한다면 삭제. (무조건 새로 생성할거임)
@@ -176,10 +178,11 @@ function DFW_SHELL_SENDTO_REGISTER{
 function DFW_POSH_ISE_THEME_ADD{
     Write-Output "[+] Powershell ISE 테마 추가 및 적용"
     
-    powershell $env:systemdrive\linked\for_my\executable_and_ini\ISEColorThemeCmdlets.ps1
+    $module = $env:systemdrive + "\linked\for_my\executable_and_ini\ISEColorThemeCmdlets.ps1"
+    . $module
     
-    $ThemeList = Get-ChildItem -Path $env:systemdrive\linked\for_my\executable_and_ini -Recurse -File -Include *.ps1xml
-    $ThemeList | Import-ISEThemeFile
+    $ThemeList = Get-ChildItem -Path $env:systemdrive\linked\for_my\executable_and_ini -Recurse -File -Include *.ps1xml 
+    $ThemeList | Import-ISEThemeFile 
 
     Set-ISETheme -ThemeName "Monokai"
 }
@@ -246,7 +249,7 @@ function MAIN{
             "13" {DFW_SHELL_SENDTO_REGISTER}
             "14" {DFW_POSH_ISE_THEME_ADD}
             "15" {DFW_EXECUTIONPOLICY_RECOVERY}
-            default {"`r`n[+] rechoice`r`n"}
+            default {"`r`n`r`n[+] Re-choice`r`n"}
         }
     }
 }

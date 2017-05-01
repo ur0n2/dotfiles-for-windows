@@ -1,14 +1,12 @@
 # Dotfiles for Windows
-===================
 - If you're computer to formatted. "dotfiles-for-windows" makes compact to you'r computing environment for high working performance.
 - "dotfiles-for-windows" is oriented a pure windows environment. 
 - You can used to windows super key that is "Win + R"
 - You can used in intranet. For example, route command, intranet auto login, messenger and etc.
 - ~~In fact, this setting is optimize to me.~~
 
-----------
 
-## *Getting Started*
+## Getting Started
 - Required to UAC privilege.
 <pre><code>powershell Start-Process powershell -Verb runas 
 Set-Executionpolicy ByPass -Force
@@ -17,12 +15,12 @@ cd .\dotfiles-for-windows\
 .\setup_ps.ps1
 </code></pre>
 
-#### Windows RUN(Win + R)
+### Windows RUN(Win + R)
 - This is Super Key in Windows
 
 
-## *Utility*
-#### 1. PicPick Hotkey
+## Utility
+### 1. PicPick Hotkey
 - PickPick is capture program. png folder 
 ```
 - Alt + 1: 영역을 지정하여 캡처
@@ -33,7 +31,7 @@ cd .\dotfiles-for-windows\
 ```
 
 
-#### 2. Naver Dictionary
+### 2. Naver Dictionary
 - Used to Naver Dictionary
 - If omissionned of argument, just clipboard contents pass to argument.
 ```
@@ -41,7 +39,7 @@ dn
 dn APPLE
 ```
 
-#### 3. Core Dictionary
+### 3. Core Dictionary
 - Used to Core Dictionary
 - If omissionned of argument, just clipboard contents pass to argument.
 ```
@@ -49,7 +47,7 @@ dc
 dc compliance
 ```
 
-#### 4. Google Translator
+### 4. Google Translator
 - Used to Google Translator
 - If omissionned of argument, just clipboard contents pass to argument.
 ```
@@ -57,7 +55,7 @@ tr
 tr paramater pass of the clipboard contents
 ```
 
-#### 5. Fast Putty(https://github.com/ur0n2/Fast-Putty)
+### 5. Fast Putty(https://github.com/ur0n2/Fast-Putty)
 - With pretty color set and configuration set.
 - If omissionned of argument, just connect to default server.
 ```
@@ -65,11 +63,11 @@ pt
 pt -wrt 21 
 ```
 
-#### 6. Fast WinSCP
+### 6. Fast WinSCP
 - like a Fast-Putty
 
 
-#### 7. Doskey Alias
+### 7. Doskey Alias
 - Doskey alias setting like a linux environment in cmd.exe
 - You can get the doskey alias list that is "doskey /MACROS" command.
 ```
@@ -89,7 +87,7 @@ doskey clear = cls
 doskey serve = "cmd /k python -mSimpleHTTPServer"
 ```
 
-#### 8. bb.bat / rb.bat
+### 8. bb.bat / rb.bat
 - bb: Immediately shutdown the system.
 - rb: Immediately reboot to system.
 ```
@@ -97,13 +95,13 @@ bb
 rb
 ```
 
-#### 9. tc.bat
+### 9. tc.bat
 - Recycle Bin(Trash Clean) clear.
 ```
 tc
 ```
 
-#### 10. serve\*
+### 10. serve\*
 - 'servec' is serving 'C drive'.
 - 'served' is serving 'D drive'.
 - 'servedw' is serving 'Downloads' directory.
@@ -113,10 +111,10 @@ served
 servedw
 ```
 
-#### 11. Powershell ISE Theme
+### 11. Powershell ISE Theme
 - Select-ISETheme
 - MS-LPL License
 
 
-## *License*
+## License
 [MIT License](https://github.com/ur0n2/dotfiles-for-windows/blob/master/LICENSE)

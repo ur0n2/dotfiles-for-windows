@@ -119,8 +119,11 @@ servedw
 - MS-LPL License
 
 
+### 12. 즐찾, l, 7z, ise스샷, ev 
+
+
 ## Author
-- by ur0n2 [:house_with_garden:](https://ur0n2.com) [:octocat:](https://github.com/ur0n2)
+- by ur0n2(Home: [:house_with_garden:](https://ur0n2.com), Github: [:octocat:](https://github.com/ur0n2))
 
 
 ## License

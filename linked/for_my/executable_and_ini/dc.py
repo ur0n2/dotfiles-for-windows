@@ -61,16 +61,19 @@ base_url= "http://coredictionary.com/core/?w=" #Core Dictionary search query url
 
 if len(sys.argv) is 1:
     print "You don't type argument(s)"
-    value = quote_plus(str(get())) #quote is not encode to slash('/')
-    #print "testvalue: " +  value
+    value = quote_plus(str(get().encode('utf-8')))
+    #print "testvalue: " +  value, type(value)
 
     query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + value #Make query
     print query
+    
     subprocess.check_call(query, shell=False)
 else:
-    value = quote_plus(" ".join(sys.argv[1:])) #[6:-6] #quote is not encode to slash('/')
-    #print "testvalue: " +  value
+    #value = quote_plus( (" ".join(sys.argv[1:])) )
+    value = quote_plus(" ".join(sys.argv[1:].encode('utf-8')))
+    #print "testvalue: " +  value, type(value)
 
     query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + value #Make query
     print query
+    
     subprocess.check_call(query, shell=False)

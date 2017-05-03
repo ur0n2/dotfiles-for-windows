@@ -33,8 +33,8 @@ $PSVersionTable.CLRVersion #seems to .NET and WMF version.
 ```powershell
 powershell Start-Process powershell -Verb runas 
 Set-Executionpolicy ByPass -Force
-git clone https://github.com/ur0n2/dotfiles-for-windows.git
-cd .\dotfiles-for-windows\
+git clone "https://github.com/ur0n2/dotfiles-for-windows.git" # or download ZIP at ur0n2's github.
+cd ".\dotfiles-for-windows\"
 .\setup_ps.ps1
 ```
 

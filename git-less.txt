@@ -1,0 +1,49 @@
+cd $env:systemdrive\;$uri=write-output https://github.com/ur0n2/dotfiles-for-windows/archive/master.zip;$outfile=write-output $env:systemdrive\dotfiles-for-windows-master.zip;$src=write-output $env:systemdrive\dotfiles-for-windows-master.zip;$dest=write-output $env:systemdrive\dotfiles-for-windows-master;$last_dest=write-output $dest\dotfiles-for-windows-master\;remove-item $dest -recurse -force -ErrorAction SilentlyContinue;remove-item $outfile -recurse -force -ErrorAction SilentlyContinue;Invoke-WebRequest -uri $uri -outfile $outfile;Add-Type -AssemblyName System.IO.Compression.FileSystem;[System.IO.Compression.ZipFile]::ExtractToDirectory($src, $dest);cd $env:systemdrive\dotfiles-for-windows-master\dotfiles-for-windows-master\;.\\setup.ps1 ;
+
+<# CODE-HISTORY-START
+#command
+cd $env:systemdrive\
+$uri='https://github.com/ur0n2/dotfiles-for-windows/archive/master.zip'
+$outfile=$env:systemdrive+'\dotfiles-for-windows-master.zip'
+Invoke-WebRequest -uri $uri -outfile $outfile
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$src=$env:systemdrive+'\dotfiles-for-windows-master.zip'
+$dest=$env:systemdrive+'\dotfiles-for-windows-master'
+[System.IO.Compression.ZipFile]::ExtractToDirectory($src, $dest)
+cd $env:systemdrive\dotfiles-for-windows-master\dotfiles-for-windows-master\
+.\setup.ps1
+
+#command refactoring. write-output으로 quote를 없애줌.
+cd $env:systemdrive\
+$uri=write-output https://github.com/ur0n2/dotfiles-for-windows/archive/master.zip
+$outfile=write-output $env:systemdrive\dotfiles-for-windows-master.zip
+Invoke-WebRequest -uri $uri -outfile $outfile
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$src=write-output $env:systemdrive\dotfiles-for-windows-master.zip
+$dest=write-output $env:systemdrive\dotfiles-for-windows-master
+[System.IO.Compression.ZipFile]::ExtractToDirectory($src, $dest)
+cd $env:systemdrive\dotfiles-for-windows-master\dotfiles-for-windows-master\
+.\setup.ps1
+
+#command refactoring. add remove-item(if exist dotfiles*.* in systemdrive)
+cd $env:systemdrive\
+$uri=write-output https://github.com/ur0n2/dotfiles-for-windows/archive/master.zip
+$outfile=write-output $env:systemdrive\dotfiles-for-windows-master.zip
+$src=write-output $env:systemdrive\dotfiles-for-windows-master.zip
+$dest=write-output $env:systemdrive\dotfiles-for-windows-master
+$last_dest=write-output $dest\dotfiles-for-windows-master\
+remove-item $dest -recurse -force -ErrorAction SilentlyContinue 
+remove-item $outfile -recurse -force -ErrorAction SilentlyContinue 
+Invoke-WebRequest -uri $uri -outfile $outfile
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+[System.IO.Compression.ZipFile]::ExtractToDirectory($src, $dest)
+cd $env:systemdrive\dotfiles-for-windows-master\dotfiles-for-windows-master\
+.\setup.ps1
+
+#clean code. .\setup.ps1 -> .\setup.ps1 + white space.
+powershell start-process "powershell '-noexit -noprofile -command "cd $env:systemdrive\;$uri=write-output https://github.com/ur0n2/dotfiles-for-windows/archive/master.zip;$outfile=write-output $env:systemdrive\dotfiles-for-windows-master.zip;$src=write-output $env:systemdrive\dotfiles-for-windows-master.zip;$dest=write-output $env:systemdrive\dotfiles-for-windows-master;$last_dest=write-output $dest\dotfiles-for-windows-master\;remove-item $dest -recurse -force -ErrorAction SilentlyContinue;remove-item $outfile -recurse -force -ErrorAction SilentlyContinue;Invoke-WebRequest -uri $uri -outfile $outfile;Add-Type -AssemblyName System.IO.Compression.FileSystem;[System.IO.Compression.ZipFile]::ExtractToDirectory($src, $dest);cd $env:systemdrive\dotfiles-for-windows-master\dotfiles-for-windows-master\;.\\setup.ps1 "'" -verb runas
+
+#latest clean code. win+r is 259 character limit problem. So, using the iex function in powershell. 
+powershell -noexit -nop -c "iex(New-Object Net.WebClient).DownloadString('https://github.com/ur0n2/dotfiles-for-windows/blob/master/git-less.txt')"
+
+CODE-HISTORY-END#>

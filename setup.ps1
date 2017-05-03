@@ -4,8 +4,8 @@
 function DFW_MAKE_DIR_AT_DESKTOP{
     Write-Output "[+] 바탕화면에 png, test 폴더 생성"
     
-    New-Item $env:USERPROFILE\Desktop\png -type directory -Force | Out-Null
-    New-Item $env:USERPROFILE\Desktop\test -type directory -Force | Out-Null
+    New-Item $env:USERPROFILE\Desktop\png -type directory -Force -ErrorAction SilentlyContinue | Out-Null
+    New-Item $env:USERPROFILE\Desktop\test -type directory -Force -ErrorAction SilentlyContinue | Out-Null
 }
 
 function DFW_ENV_VAR_REGISTER{
@@ -34,7 +34,7 @@ function DFW_FAVORITE_COPY{
     $src = ".\favorite\*"
     $dest = "$env:userprofile\links\"
 
-    New-Item -path $dest -type directory -force 
+    New-Item -path $dest -type directory -force -ErrorAction SilentlyContinue 
     Copy-Item -path $src -destination $dest -recurse -force
 }
 
@@ -44,7 +44,7 @@ function DFW_LINKED_COPY{
     $src = ".\linked\*"
     $dest = "$env:systemdrive\linked\"
 
-    New-Item -path $dest -type directory -force 
+    New-Item -path $dest -type directory -force -ErrorAction SilentlyContinue 
     Copy-Item -path $src -destination $dest -recurse -force
 }
 
@@ -183,7 +183,7 @@ function DFW_POSH_ISE_THEME_ADD{
     $module = $env:systemdrive + "\linked\for_my\executable_and_ini\ISEColorThemeCmdlets.ps1"
     . $module #Equal to Import-Module $module
     
-    New-Item -Path "HKCU:\Software\Microsoft\PowerShell\3\Hosts\PowerShellISE\ColorThemes" -Force #ISEColorHtemeCmdlets.ps1 bug.. upgrade ps2.0 to ps4.0 environment -> "
+    New-Item -Path "HKCU:\Software\Microsoft\PowerShell\3\Hosts\PowerShellISE\ColorThemes" -Force -ErrorAction SilentlyContinue #ISEColorHtemeCmdlets.ps1 bug.. upgrade ps2.0 to ps4.0 environment -> "
 
     $ThemeList = Get-ChildItem -Path $env:systemdrive\linked\for_my\executable_and_ini -Recurse -File -Include *.ps1xml 
     $ThemeList | Import-ISEThemeFile 

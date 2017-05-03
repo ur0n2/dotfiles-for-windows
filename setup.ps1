@@ -34,6 +34,7 @@ function DFW_FAVORITE_COPY{
     $src = ".\favorite\*"
     $dest = "$env:userprofile\links\"
 
+    New-Item -path $dest -type directory -force 
     Copy-Item -path $src -destination $dest -recurse -force
 }
 
@@ -43,6 +44,7 @@ function DFW_LINKED_COPY{
     $src = ".\linked\*"
     $dest = "$env:systemdrive\linked\"
 
+    New-Item -path $dest -type directory -force 
     Copy-Item -path $src -destination $dest -recurse -force
 }
 

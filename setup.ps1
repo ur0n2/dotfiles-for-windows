@@ -100,7 +100,7 @@ function DFW_STARTUP_REGISTER{
 function DFW_PICPICK_SETTING{
     Write-Output "[+] 픽픽 설정"
 
-    $src = ".\picpick\*"
+    $src = ".\picpick\"
     $dest = "$env:appdata\PicPick\"
     $make_ini = $dest + "make_picpick_ini.bat"
 

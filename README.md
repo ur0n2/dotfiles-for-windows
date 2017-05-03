@@ -1,9 +1,8 @@
 # Dotfiles for Windows
-- If you're computer to formatted. "dotfiles-for-windows" makes compact to you'r computing environment for high working performance.
+- If you're computer to formatted. "dotfiles-for-windows" makes compact to you're computing environment for high working performance.
 - "dotfiles-for-windows" is oriented a pure windows environment. 
 - You can used to windows super key that is "Win + R"
 - You can used in intranet. For example, route command, intranet auto login, messenger and etc.
-- ~~In fact, this setting is optimize to me.~~
 - Test OS(PASS): Windows 7 Pro x64, Windows Server 2012 R2 x64, Windows 10 Pro RS2 x64
 
 
@@ -144,17 +143,20 @@ servedw
 
 ### 11. Powershell ISE Theme
 
-![]()
+![](https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/posh_monokai.png)
 
 - Reference to [here](http://lifeinpowershell.blogspot.kr/2014/03/powershell-ise-color-themes.html).
 - Need to [ISETheme](https://gallery.technet.microsoft.com/ISE-Color-Theme-Cmdlets-24905f9e) library for cnfigurate a ISETheme. It is MS-LPL License.
-
-
+- ISETheme library support to the Powershell_ISE. It can't support to the Powershell.
+- Just press the __*F5*__(run script) key. And then, Running on __*posh_ise_set_theme.ps1*__ by setup.ps1
 
 ### 12. 즐찾, l, 7z, ise스샷, ev 
 
 
-### 13. Directory Tree
+### 13. Directory Tree Explanation
+> tree /f %systemdrive%\linked\for_my
+
+
 
 ## Author
 - by ur0n2(Home: [:house_with_garden:](https://ur0n2.com), Github: [:octocat:](https://github.com/ur0n2))

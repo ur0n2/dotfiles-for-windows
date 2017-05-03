@@ -35,7 +35,7 @@ function DFW_FAVORITE_COPY{
     $dest = "$env:userprofile\links\"
 
     New-Item -path $dest -type directory -force -ErrorAction SilentlyContinue 
-    Copy-Item -path $src -destination $dest -recurse -force
+    Copy-Item -path $src -destination $dest -recurse -force | Out-Null # Out-Null == -ErrorAction SilentlyContinue
 }
 
 function DFW_LINKED_COPY{
@@ -44,8 +44,9 @@ function DFW_LINKED_COPY{
     $src = ".\linked\*"
     $dest = "$env:systemdrive\linked\"
 
+    Remove-Item -path $dest -recurse -force -ErrorAction SilentlyContinue
     New-Item -path $dest -type directory -force -ErrorAction SilentlyContinue 
-    Copy-Item -path $src -destination $dest -recurse -force
+    Copy-Item -path $src -destination $dest -recurse -force | Out-Null
 }
 
 function DFW_DOWNLOAD_TO_WEB{
@@ -178,17 +179,11 @@ function DFW_SHELL_SENDTO_REGISTER{
 }
 
 function DFW_POSH_ISE_THEME_ADD{
-    Write-Output "[+] Powershell ISE 테마 추가 및 적용"
+    Write-Output "[+] Powershell ISE 테마 추가 및 적용. 스크립트 실행(F5) 후 Monokai 테마 자동 적용 및 다른 테마 선택 가능."
     
-    $module = $env:systemdrive + "\linked\for_my\executable_and_ini\ISEColorThemeCmdlets.ps1"
-    . $module #Equal to Import-Module $module
+    $the = $env:systemdrive + ".\posh_ise_set_theme.ps1"
     
-    New-Item -Path "HKCU:\Software\Microsoft\PowerShell\3\Hosts\PowerShellISE\ColorThemes" -Force -ErrorAction SilentlyContinue #ISEColorHtemeCmdlets.ps1 bug.. upgrade ps2.0 to ps4.0 environment -> "
-
-    $ThemeList = Get-ChildItem -Path $env:systemdrive\linked\for_my\executable_and_ini -Recurse -File -Include *.ps1xml 
-    $ThemeList | Import-ISEThemeFile 
-
-    Set-ISETheme -ThemeName "Monokai"
+    powershell_ise -File $the
 }
 
 function DFW_EXECUTIONPOLICY_RECOVERY{

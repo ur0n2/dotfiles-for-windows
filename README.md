@@ -30,15 +30,18 @@ $PSVersionTable.CLRVersion #seems to .NET and WMF version.
 
 ## Getting Started
 - Required to powershell_ise with UAC privilege. Because, 'Powershell ISE Theme' library running on powershell_ise.(Import-Module) 
-> Using git for installation. (In Win+R)
+- Don't worry, __*just type below command in 'Windows Run'(Win+R) window!*__
+
+> Using git for installation.
 ```powershell
 powershell -noexit -nop -c "iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/using-git.txt')"
 ```
 
-> Git-less installation. (In Win+R)
+> Git-less installation.
 ```powershell
 powershell -noexit -nop -c "iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/git-less.txt')"
 ```
+
 - [git-less.txt](https://github.com/ur0n2/dotfiles-for-windows/blob/master/git-less.txt) file include to why i am using the iex function in powershell. 
 
 
@@ -46,7 +49,7 @@ powershell -noexit -nop -c "iex(New-Object Net.WebClient).DownloadString('https:
 
 ![](https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/winR.png)
 
-- This is Super Key in Windows
+- This is __*Super Key*__ in Windows.
 
 
 ## Utility

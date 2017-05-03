@@ -29,9 +29,9 @@ $PSVersionTable.CLRVersion #seems to .NET and WMF version.
 
 
 ## Getting Started
-- Required to UAC privilege.
+- Required to powershell_ise with UAC privilege. Because, 'Powershell ISE Theme' library running on powershell_ise.(Import-Module) 
 ```powershell
-powershell Start-Process powershell -Verb runas 
+powershell Start-Process powershell_ise -Verb runas 
 Set-Executionpolicy ByPass -Force
 git clone "https://github.com/ur0n2/dotfiles-for-windows.git" # or download ZIP at ur0n2's github.
 cd ".\dotfiles-for-windows\"

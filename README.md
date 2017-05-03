@@ -32,12 +32,12 @@ $PSVersionTable.CLRVersion #seems to .NET and WMF version.
 - Required to powershell_ise with UAC privilege. Because, 'Powershell ISE Theme' library running on powershell_ise.(Import-Module) 
 > Using git for installation. (In Win+R)
 ```powershell
-powershell start-process "powershell '-noexit -command "Set-Executionpolicy ByPass;cd $env:systemdrive\;git clone https://github.com/ur0n2/dotfiles-for-windows.git;cd .\dotfiles-for-windows\;.\setup.ps1"'" -verb runas
+powershell -noexit -nop -c "iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/using-git.txt')"
 ```
 
 > Git-less installation. (In Win+R)
 ```powershell
-powershell -noexit -nop -c "iex(New-Object Net.WebClient).DownloadString('https://github.com/ur0n2/dotfiles-for-windows/blob/master/git-less.txt')"
+powershell -noexit -nop -c "iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/git-less.txt')"
 ```
 - [git-less.txt](https://github.com/ur0n2/dotfiles-for-windows/blob/master/git-less.txt) file include to why i am using the iex function in powershell. 
 
@@ -150,12 +150,125 @@ servedw
 - ISETheme library support to the Powershell_ISE. It can't support to the Powershell.
 - Just press the __*F5*__(run script) key. And then, Running on __*posh_ise_set_theme.ps1*__ by setup.ps1
 
-### 12. 즐찾, l, 7z, ise스샷, ev 
+### 12. Favorite Link
 
 
-### 13. Directory Tree Explanation
+### 13. Compress files linking program is 7z
+
+
+### 14. Evernote Wrapper(https://github.com/ur0n2/Evernote-Wrapper)
+
+
+### 15. Directory Tree Explanation
 > tree /f %systemdrive%\linked\for_my
-
+```
+%systemdrive%\LINKED\FOR_MY
+├─executable_and_ini
+│  │  bb.bat: 
+│  │  dc.py: 
+│  │  default.ini
+│  │  dn.py: 
+│  │  Doskey_Alias_Setting.cmd
+│  │  Doskey_Registry.reg: 
+│  │  ev.py: 
+│  │  Fast_PuTTY.py: 
+│  │  ISEColorThemeCmdlets.ps1
+│  │  pingpong.bat: 
+│  │  putty_color_set.reg: 
+│  │  rb.bat: 
+│  │  tc.bat: 
+│  │  tr.py: 
+│  │  
+│  └─PowershellColorThemes
+│          Blackboard.StorableColorTheme.ps1xml: 
+│          CoSolarized.StorableColorTheme.ps1xml: 
+│          IR_Black.StorableColorTheme.ps1xml: 
+│          Monokai.StorableColorTheme.ps1xml: 
+│          PowerShellColorThemes
+│          PowerShellColorThemes Information.txt
+│          
+└─lnk
+        7z.lnk: 
+        bb.lnk: 
+        bt.lnk: 
+        c.lnk: 
+        cff.lnk: 
+        chrome.lnk: 
+        ci.lnk: 
+        cmd.lnk: 
+        cygwin.lnk: 
+        d.lnk: 
+        dc.lnk: 
+        dd.lnk: 
+        dk.lnk: 
+        dn.lnk: 
+        ds.lnk: 
+        dw.lnk: 
+        edge.lnk: 
+        ep.lnk: 
+        ev.lnk: 
+        ff.lnk: 
+        fiddler.lnk: 
+        g.lnk: 
+        gd.lnk: 
+        gd_.lnk: 
+        gm.lnk: 
+        hfs.lnk: 
+        hwp.lnk: 
+        HxD.lnk: 
+        ida.lnk: 
+        ie.lnk: 
+        kt.lnk: 
+        l.lnk: 
+        linked.lnk: 
+        n.lnk: 
+        nd.lnk: 
+        nd_.lnk: 
+        npp.lnk: 
+        nt.lnk: 
+        on.lnk: 
+        p.lnk: 
+        paros_.lnk: 
+        pe.lnk: 
+        peid.lnk: 
+        peview.lnk: 
+        pipo.lnk: 
+        png.lnk: 
+        pp.lnk: 
+        ppt.lnk: 
+        ps.lnk: 
+        psi.lnk: 
+        pt.lnk: 
+        putty.lnk: 
+        pw.lnk: 
+        python.lnk: 
+        rb.lnk: 
+        rdp.lnk: 
+        rs.lnk: 
+        sb.lnk: 
+        scp.lnk: 
+        servec.lnk: 
+        served.lnk: 
+        servedw.lnk: 
+        ss.lnk: 
+        startup.lnk: 
+        t.lnk: 
+        tc.lnk: 
+        tcc.lnk: 
+        test.lnk: 
+        tr.lnk: 
+        tv.lnk: 
+        ut.lnk: 
+        v.lnk: 
+        vb.lnk: 
+        vm.lnk: 
+        vol.lnk: 
+        vs.lnk: 
+        wh.lnk: 
+        ws.lnk: 
+        xftp.lnk: 
+        xs.lnk: 
+```
 
 
 ## Author

@@ -1,0 +1,19 @@
+#using iex
+powershell start-process "powershell '-noexit -command "Set-Executionpolicy ByPass;cd $env:systemdrive\;$dest=write-output $env:systemdrive\dotfiles-for-windows;remove-item $dest -recurse -force -ErrorAction SilentlyContinue;git clone https://github.com/ur0n2/dotfiles-for-windows.git;cd .\dotfiles-for-windows\;.\\setup.ps1 ; "'" -verb runas
+
+#powershell -noexit -nop -c "iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/using-git.txt')"
+
+
+#test 
+<# CODE-HISTORY-START
+
+#remove-item(if exist dotfiles-for-windows directory and add fin chcarcter(;) ".\setup.ps1" -> ".\\setup.ps1 ; " 
+Set-Executionpolicy ByPass;
+cd $env:systemdrive\;
+$dest=write-output $env:systemdrive\dotfiles-for-windows
+remove-item $dest -recurse -force;
+git clone https://github.com/ur0n2/dotfiles-for-windows.git;
+cd .\dotfiles-for-windows\;
+.\\setup.ps1 ; 
+
+CODE-HISTORY-END#>

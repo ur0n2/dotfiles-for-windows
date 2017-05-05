@@ -50,6 +50,7 @@ def win32_utf8_argv():
         pass
 
 
+# support to clipboard
 OpenClipboard = ctypes.windll.user32.OpenClipboard
 EmptyClipboard = ctypes.windll.user32.EmptyClipboard
 GetClipboardData = ctypes.windll.user32.GetClipboardData
@@ -108,11 +109,11 @@ else:
 #print prgm_path
 base_url= "https://translate.google.co.kr/#auto/ko/" #Google Translate Query URL
 
-print sys.getfilesystemencoding()
+#print sys.getfilesystemencoding()
 
 if len(sys.argv) is 1:
     print "You don't type argument(s)"
-    value = quote_plus(str(get().encode('mbcs')))
+    value = quote_plus(str(get().encode('mbcs'))) #cmd.exe is MBCS character set
     print "testvalue: " +  value, type(value)
 
     query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + value #Make query
@@ -120,28 +121,10 @@ if len(sys.argv) is 1:
     
     subprocess.check_call(query, shell=False)
 else:
-    #value = quote_plus( (" ".join(sys.argv[1:])) )
-    #value = quote_plus(" ".join(sys.argv[1:].encode('mbcs')))
-    #value = quote_plus( (" ".join(sys.argv[1:])) )
-    #print "testvalue: " +  value, type(value)
-    
-    """
-    argv = win32_utf8_argv() 
-    a = str(" ".join(argv[1:])).decode('utf-8') #.decode(sys.getfilesystemencoding())
-    print a
-    g =  quote_plus(str(a.encode('utf-8')))
-    print g
-    a= g
-    query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + a #value #Make query
-    print query
-    """
-
     argv = win32_utf8_argv() 
     value =  quote_plus( str( (" ".join(argv[1:]) ) ) )
-
     query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + value #value #Make query
-    print query
-    
 
+    print query
 
     subprocess.check_call(query, shell=False)

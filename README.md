@@ -71,11 +71,13 @@ powershell -noexit -nop -c "iex(New-Object Net.WebClient).DownloadString('https:
 ```
 dn
 dn APPLE
+dn 네이버
 ```
 
 ### 3. Core Dictionary
 - Used to Core Dictionary
 - If omissionned of argument, just clipboard contents pass to argument.
+- Core-Dictionary is support to only type for enlgish.
 ```
 dc
 dc compliance
@@ -87,6 +89,7 @@ dc compliance
 ```
 tr
 tr paramater pass of the clipboard contents
+tr 사과
 ```
 
 ### 5. Fast Putty(https://github.com/ur0n2/Fast-Putty)

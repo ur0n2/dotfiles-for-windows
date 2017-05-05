@@ -4,6 +4,7 @@
 - You can used to windows super key that is "Win + R"
 - You can used in intranet. For example, route command, intranet auto login, messenger and etc.
 - Test OS(PASS): Windows 7 Pro x64, Windows Server 2012 R2 x64, Windows 10 Pro RS2 x64
+- Dotfiles-for-Windows is an alternative of Mac's Spotlight for Windows OS!
 
 
 ## Prerequisites 
@@ -30,7 +31,7 @@ $PSVersionTable.CLRVersion #seems to .NET and WMF version.
 
 ## Getting Started
 - Required to powershell_ise with UAC privilege. Because, 'Powershell ISE Theme' library running on powershell_ise.(Import-Module) 
-- Don't worry, __*just type below command in 'Windows Run'(Win+R) window!*__
+- __*Just type below command in 'Windows Run'(Win+R) window!*__
 
 > Using git for installation.
 ```powershell
@@ -151,7 +152,13 @@ servedw
 - Reference to [here](http://lifeinpowershell.blogspot.kr/2014/03/powershell-ise-color-themes.html).
 - Need to [ISETheme](https://gallery.technet.microsoft.com/ISE-Color-Theme-Cmdlets-24905f9e) library for cnfigurate a ISETheme. It is MS-LPL License.
 - ISETheme library support to the Powershell_ISE. It can't support to the Powershell.
-- Just press the __*F5*__(run script) key. And then, Running on __*posh_ise_set_theme.ps1*__ by setup.ps1
+```
+Set-ExecutionPolicy ByPass -Force
+#- Just press the __*F5*__(run script) key. And then, Running on __*posh_ise_set_theme.ps1*__ by setup.ps1
+Set-ISETheme -ThemeName "Blackboard"
+Select-ISETheme
+```
+
 
 ### 12. Favorite Link
 

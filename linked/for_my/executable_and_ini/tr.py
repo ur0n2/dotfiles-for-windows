@@ -1,8 +1,54 @@
+#-*- coding:mbcs -*-
 import subprocess
 import os
 import sys
 import ctypes
 from urllib import quote_plus
+
+def win32_utf8_argv():                                                                                               
+    """Uses shell32.GetCommandLineArgvW to get sys.argv as a list of UTF-8                                           
+    strings.                                                                                                         
+                                                                                                                     
+    Versions 2.5 and older of Python don't support Unicode in sys.argv on                                            
+    Windows, with the underlying Windows API instead replacing multi-byte                                            
+    characters with '?'.                                                                                             
+                                                                                                                     
+    Returns None on failure.                                                                                         
+                                                                                                                     
+    Example usage:                                                                                                   
+                                                                                                                     
+    >>> def main(argv=None):                                                                                         
+    ...    if argv is None:                                                                                          
+    ...        argv = win32_utf8_argv() or sys.argv                                                                  
+    ...                                                                                                              
+    """                                                                                                              
+                                                                                                                     
+    try:                                                                                                             
+        from ctypes import POINTER, byref, cdll, c_int, windll                                                       
+        from ctypes.wintypes import LPCWSTR, LPWSTR                                                                  
+                                                                                                                     
+        GetCommandLineW = cdll.kernel32.GetCommandLineW                                                              
+        GetCommandLineW.argtypes = []                                                                                
+        GetCommandLineW.restype = LPCWSTR                                                                            
+                                                                                                                     
+        CommandLineToArgvW = windll.shell32.CommandLineToArgvW                                                       
+        CommandLineToArgvW.argtypes = [LPCWSTR, POINTER(c_int)]                                                      
+        CommandLineToArgvW.restype = POINTER(LPWSTR)                                                                 
+                                                                                                                     
+        cmd = GetCommandLineW()                                                                                      
+        argc = c_int(0)                                                                                              
+        argv = CommandLineToArgvW(cmd, byref(argc))                                                                  
+        if argc.value > 0:                                                                                           
+            # Remove Python executable if present                                                                    
+            if argc.value - len(sys.argv) == 1:                                                                      
+                start = 1                                                                                            
+            else:                                                                                                    
+                start = 0                                                                                            
+            return [argv[i].encode('utf-8') for i in                                                                 
+                    xrange(start, argc.value)]                                                                       
+    except Exception:                                                                                                
+        pass
+
 
 OpenClipboard = ctypes.windll.user32.OpenClipboard
 EmptyClipboard = ctypes.windll.user32.EmptyClipboard
@@ -29,7 +75,8 @@ def get():
     if pcontents and size:
         raw_data = ctypes.create_string_buffer(size)
         ctypes.memmove(raw_data, pcontents, size)
-        text = raw_data.raw.decode('utf-16le').rstrip(u'\0')
+        #text = raw_data.raw.decode('utf-16le').rstrip(u'\0')
+        text = raw_data.raw.decode('mbcs').rstrip(u'\0')
     GlobalUnlock(handle)
     CloseClipboard()
     return text
@@ -37,7 +84,8 @@ def get():
 def put(s):
     if not isinstance(s, unicode_type):
         s = s.decode('mbcs')
-    data = s.encode('utf-16le')
+    #data = s.encode('utf-16le')
+    data = s.encode('mbcs')
     OpenClipboard(None)
     EmptyClipboard()
     handle = GlobalAlloc(GMEM_MOVEABLE | GMEM_ZEROINIT, len(data) + 2)
@@ -60,11 +108,12 @@ else:
 #print prgm_path
 base_url= "https://translate.google.co.kr/#auto/ko/" #Google Translate Query URL
 
+print sys.getfilesystemencoding()
 
 if len(sys.argv) is 1:
     print "You don't type argument(s)"
-    value = quote_plus(str(get().encode('utf-8')))
-    #print "testvalue: " +  value, type(value)
+    value = quote_plus(str(get().encode('mbcs')))
+    print "testvalue: " +  value, type(value)
 
     query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + value #Make query
     print query
@@ -72,10 +121,27 @@ if len(sys.argv) is 1:
     subprocess.check_call(query, shell=False)
 else:
     #value = quote_plus( (" ".join(sys.argv[1:])) )
-    value = quote_plus(" ".join(sys.argv[1:].encode('utf-8')))
+    #value = quote_plus(" ".join(sys.argv[1:].encode('mbcs')))
+    #value = quote_plus( (" ".join(sys.argv[1:])) )
     #print "testvalue: " +  value, type(value)
+    
+    """
+    argv = win32_utf8_argv() 
+    a = str(" ".join(argv[1:])).decode('utf-8') #.decode(sys.getfilesystemencoding())
+    print a
+    g =  quote_plus(str(a.encode('utf-8')))
+    print g
+    a= g
+    query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + a #value #Make query
+    print query
+    """
 
-    query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + value #Make query
+    argv = win32_utf8_argv() 
+    value =  quote_plus( str( (" ".join(argv[1:]) ) ) )
+
+    query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + value #value #Make query
     print query
     
+
+
     subprocess.check_call(query, shell=False)

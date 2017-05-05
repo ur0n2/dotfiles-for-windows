@@ -6,6 +6,3 @@ New-Item -Path "HKCU:\Software\Microsoft\PowerShell\3\Hosts\PowerShellISE\ColorT
 
 $ThemeList = Get-ChildItem -Path $env:systemdrive\linked\for_my\executable_and_ini -Recurse -File -Include *.ps1xml 
 $ThemeList | Import-ISEThemeFile 
-
-Set-ISETheme -ThemeName "Monokai"
-Select-ISETheme

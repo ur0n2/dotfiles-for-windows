@@ -34,7 +34,7 @@ function DFW_FAVORITE_COPY{
     $src = ".\favorite\*"
     $dest = "$env:userprofile\links\"
 
-    New-Item -path $dest -type directory -force -ErrorAction SilentlyContinue 
+    New-Item -path $dest -type directory -force -ErrorAction SilentlyContinue  | Out-Null
     Copy-Item -path $src -destination $dest -recurse -force | Out-Null # Out-Null == -ErrorAction SilentlyContinue
 }
 
@@ -44,8 +44,8 @@ function DFW_LINKED_COPY{
     $src = ".\linked\*"
     $dest = "$env:systemdrive\linked\"
 
-    Remove-Item -path $dest -recurse -force -ErrorAction SilentlyContinue
-    New-Item -path $dest -type directory -force -ErrorAction SilentlyContinue 
+    Remove-Item -path $dest -recurse -force -ErrorAction SilentlyContinue | Out-Null
+    New-Item -path $dest -type directory -force -ErrorAction SilentlyContinue  | Out-Null
     Copy-Item -path $src -destination $dest -recurse -force | Out-Null
 }
 

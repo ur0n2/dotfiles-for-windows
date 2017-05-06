@@ -43,7 +43,7 @@ powershell -noexit -nop -c "iex(New-Object Net.WebClient).DownloadString('https:
 powershell -noexit -nop -c "iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/git-less.ps1')"
 ```
 
-- [git-less.txt](https://github.com/ur0n2/dotfiles-for-windows/blob/master/git-less.txt) file include to why i am using the iex function in powershell. 
+- [git-less.ps1](https://github.com/ur0n2/dotfiles-for-windows/blob/master/git-less.ps1) file include to why i am using the iex function in powershell.(See the commit history)
 
 
 ### Windows RUN(Win + R)
@@ -216,23 +216,23 @@ Select-ISETheme
         dk.lnk: 
         dn.lnk: 
         ds.lnk: 
-        dw.lnk: 
+        dw.lnk: Download Directory
         edge.lnk: 
         ep.lnk: 
         ev.lnk: 
         ff.lnk: 
         fiddler.lnk: 
-        g.lnk: 
-        gd.lnk: 
-        gd_.lnk: 
-        gm.lnk: 
+        g.lnk: Git-Bash for Windows
+        gd.lnk: Google Drive Directory
+        gd_.lnk: Google Drive
+        gm.lnk: GMacro
         hfs.lnk: 
-        hwp.lnk: 
-        HxD.lnk: 
-        ida.lnk: 
-        ie.lnk: 
-        kt.lnk: 
-        l.lnk: 
+        hwp.lnk: Hangle Editor
+        HxD.lnk: HxD
+        ida.lnk: IDA Pro
+        ie.lnk: Internet Explorer
+        kt.lnk: Kakao Talk
+        l.lnk: Linked Directory
         linked.lnk: 
         n.lnk: 
         nd.lnk: 

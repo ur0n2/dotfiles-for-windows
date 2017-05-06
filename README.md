@@ -258,29 +258,29 @@ Select-ISETheme
         rb.lnk: 
         rdp.lnk: 
         rs.lnk: 
-        sb.lnk: 
-        scp.lnk: 
+        sb.lnk: Sublime Text
+        scp.lnk: WinSCP
         servec.lnk: 
         served.lnk: 
         servedw.lnk: 
         ss.lnk: 
-        startup.lnk: 
-        t.lnk: 
-        tc.lnk: 
-        tcc.lnk: 
-        test.lnk: 
+        startup.lnk: Startup directory path
+        t.lnk: Trash(Recycle Bin)
+        tc.lnk: Trash clean
+        tcc.lnk: Trash clean and remove *.png file of png directory 
+        test.lnk: 'test' directory in Desktop
         tr.lnk: 
         tv.lnk: 
         ut.lnk: 
-        v.lnk: 
-        vb.lnk: 
-        vm.lnk: 
-        vol.lnk: 
-        vs.lnk: 
+        v.lnk: vSphere
+        vb.lnk: VirtualBox
+        vm.lnk: VMWare
+        vol.lnk: Volmum Mixer(Controller)
+        vs.lnk: Visual Studio Code
         wh.lnk: 
-        ws.lnk: 
-        xftp.lnk: 
-        xs.lnk: 
+        ws.lnk: Wireshark
+        xftp.lnk: XFTP
+        xs.lnk: XShell
 ```
 
 

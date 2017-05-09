@@ -201,27 +201,27 @@ Select-ISETheme
 │          PowerShellColorThemes Information.txt
 │          
 └─lnk
-        7z.lnk: 
+        7z.lnk: 7-Zip
         bb.lnk: 
         bt.lnk: 
         c.lnk: 
-        cff.lnk: 
+        cff.lnk: CFF Explorer
         chrome.lnk: 
-        ci.lnk: 
+        ci.lnk: Chrome Incognito-Mode
         cmd.lnk: 
         cygwin.lnk: 
         d.lnk: 
         dc.lnk: 
-        dd.lnk: 
+        dd.lnk: Desktop
         dk.lnk: 
         dn.lnk: 
         ds.lnk: 
         dw.lnk: Download Directory
-        edge.lnk: 
-        ep.lnk: 
+        edge.lnk: Edge Browser
+        ep.lnk: Editplus
         ev.lnk: 
-        ff.lnk: 
-        fiddler.lnk: 
+        ff.lnk: Firefox
+        fiddler.lnk: Fiddler
         g.lnk: Git-Bash for Windows
         gd.lnk: Google Drive Directory
         gd_.lnk: Google Drive
@@ -237,17 +237,17 @@ Select-ISETheme
         n.lnk: 
         nd.lnk: 
         nd_.lnk: 
-        npp.lnk: 
-        nt.lnk: 
+        npp.lnk: Notepad Plus
+        nt.lnk: Notepad
         on.lnk: 
-        p.lnk: 
+        p.lnk: Python for command
         paros_.lnk: 
         pe.lnk: 
         peid.lnk: 
         peview.lnk: 
-        pipo.lnk: 
-        png.lnk: 
-        pp.lnk: 
+        pipo.lnk: Ping Tester
+        png.lnk: Png Directory
+        pp.lnk: PicPick
         ppt.lnk: 
         ps.lnk: 
         psi.lnk: 
@@ -256,7 +256,7 @@ Select-ISETheme
         pw.lnk: 
         python.lnk: 
         rb.lnk: 
-        rdp.lnk: 
+        rdp.lnk: mstsc wrap
         rs.lnk: 
         sb.lnk: Sublime Text
         scp.lnk: WinSCP
@@ -289,4 +289,4 @@ Select-ISETheme
 
 
 ## License
-[MIT License](https://github.com/ur0n2/dotfiles-for-windows/blob/master/LICENSE)
+- [MIT License](https://github.com/ur0n2/dotfiles-for-windows/blob/master/LICENSE)

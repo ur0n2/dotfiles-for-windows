@@ -17,7 +17,7 @@ function DFW_ENV_VAR_REGISTER{
         if ($curr_path_var.Trim() -contains ([Environment]::GetEnvironmentVariable("ur0n2", "Machine") -split ";")[1].Trim()) {
             Write-Output "[-] 현재 path 변수에 ur0n2[1]값 포함"
         }
-        Write-Output "[-] `"ur0n2`" Environment Variable is already exist"
+        Write-Output "[-] `"ur0n2`" Environment Variable is already exist."
     }
     else{
         [Environment]::SetEnvironmentVariable("ur0n2", $add_path, "Machine")

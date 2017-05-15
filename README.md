@@ -35,12 +35,12 @@ $PSVersionTable.CLRVersion #seems to .NET and WMF version.
 
 > Using git for installation.
 ```powershell
-powershell -noexit -nop -c "start-process powershell -verb runas -argumentlist {-command IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/using-git.ps1')}"
+powershell -nop -command "start-process powershell -verb runas -argumentlist {-command IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/using-git.ps1')}"
 ```
 
 > Git-less installation.
 ```powershell
-powershell -noexit -nop -c "start-process powershell -verb runas -argumentlist {-command IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/git-less.ps1')}"
+powershell -nop -command "start-process powershell -verb runas -argumentlist {-command IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/git-less.ps1')}"
 ```
 
 - [git-less.ps1](https://github.com/ur0n2/dotfiles-for-windows/blob/master/git-less.ps1) file include to why i am using the iex function in powershell.(See the commit history)

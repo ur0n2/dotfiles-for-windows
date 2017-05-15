@@ -216,7 +216,7 @@ function MAIN{
         write-output "15. DFW_EXECUTIONPOLICY_RECOVERY"
         write-output ""
 
-        $a = Read-Host -prompt "[+] Choise the menu: "
+        $a = Read-Host -prompt "[+] Choise the menu"
 
         switch($a){
             "0" {EXIT}

@@ -182,8 +182,10 @@ function DFW_POSH_ISE_THEME_ADD{
     Write-Output "[+] Powershell ISE 테마 추가 및 적용. 스크립트 실행(F5) 후 Monokai 테마 자동 적용 및 다른 테마 선택 가능."
     
     $the = $env:systemdrive + ".\posh_ise_set_theme.ps1"
-    
+    #dotfiles-for-windows-master
+    #dotfiles-for-windows
     powershell_ise -File $the
+    start-process https://github.com/ur0n2/dotfiles-for-windows/blob/master/POSH_ISE_THEME.md
 }
 
 function DFW_EXECUTIONPOLICY_RECOVERY{

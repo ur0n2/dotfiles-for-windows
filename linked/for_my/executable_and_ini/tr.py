@@ -76,8 +76,8 @@ def get():
     if pcontents and size:
         raw_data = ctypes.create_string_buffer(size)
         ctypes.memmove(raw_data, pcontents, size)
-        #text = raw_data.raw.decode('utf-16le').rstrip(u'\0')
-        text = raw_data.raw.decode('mbcs').rstrip(u'\0')
+        text = raw_data.raw.decode('utf-16le').rstrip(u'\0')
+        #text = raw_data.raw.decode('mbcs').rstrip(u'\0')
     GlobalUnlock(handle)
     CloseClipboard()
     return text
@@ -85,8 +85,8 @@ def get():
 def put(s):
     if not isinstance(s, unicode_type):
         s = s.decode('mbcs')
-    #data = s.encode('utf-16le')
-    data = s.encode('mbcs')
+    data = s.encode('utf-16le')
+    #data = s.encode('mbcs')
     OpenClipboard(None)
     EmptyClipboard()
     handle = GlobalAlloc(GMEM_MOVEABLE | GMEM_ZEROINIT, len(data) + 2)
@@ -113,12 +113,12 @@ base_url= "https://translate.google.co.kr/#auto/ko/" #Google Translate Query URL
 
 if len(sys.argv) is 1:
     print "You don't type argument(s)"
-    value = quote_plus(str(get().encode('mbcs'))) #cmd.exe is MBCS character set
-    print "testvalue: " +  value, type(value)
+    value = quote_plus(str(get().encode('utf-8'))) # 한글/영어 테스트 패스
+    print value
 
     query = prgm_path + "\Google\Chrome\Application\chrome.exe " + str(base_url) + value #Make query
     print query
-    
+
     subprocess.check_call(query, shell=False)
 else:
     argv = win32_utf8_argv() 
@@ -128,3 +128,13 @@ else:
     print query
 
     subprocess.check_call(query, shell=False)
+
+def clip_test():
+    put("가나다")
+    #subprocess.check_call(query, shell=False)
+    put("123asd")
+    #subprocess.check_call(query, shell=False)
+    put("가나다123")
+    #subprocess.check_call(query, shell=False)
+
+clip_test()

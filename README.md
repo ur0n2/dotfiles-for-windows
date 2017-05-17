@@ -164,12 +164,47 @@ Select-ISETheme
 
 
 ### 12. Favorite Link
+- Add the Favorite link.
+- That is System Driver(ex: C:\), Slave Drive(ex: D:\), png and test directory.
+
+![](https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/favorit.png)
 
 
-### 13. Compress files linking program is 7z
 
+### 13. 7Zip Setting.
+- 7Zip is default compress files linking program.
+- 7Zip is linking program to the below extensions.
+```powershell
+".7z", ".XZ", ".BZIP2", ".GZIP", ".TAR", ".ZIP", ".ARJ", ".CPIO", ".CramFS", ".EXT", ".FAT", ".GPT", ".HFS", ".IHEX", ".ISO", ".LZH", ".LZMA", ".MBR", ".NTFS", ".QCOW2", ".RAR", ".RPM", ".SquashFS", ".UDF", ".UEFI", ".WIM", ".XAR", ".Z")
+```
 
 ### 14. Evernote Wrapper(https://github.com/ur0n2/Evernote-Wrapper)
+- Evernote wrapper with enscript.exe :bowtie:
+- More information is [here](https://github.com/ur0n2/evernote-wrapper)
+----------
+
+실행
+-------------
+- Windows + R
+
+![asd](https://cloud.githubusercontent.com/assets/11265463/25363203/d38fd738-2993-11e7-93f0-66eabe9e444e.gif)
+
+- 에버노트(evernote.exe) 실행
+```
+ev.py
+```
+
+- day note 노트북에 오늘 날짜의 노트 오픈(없으면 생성)
+```
+ev.py t
+```
+
+- 모든 노트에서 "식단"이 가장 많이 들어간 노트를 query함 
+```
+ev.py 식단
+```
+
+----------
 
 
 ### 15. Directory Tree Explanation
@@ -248,13 +283,13 @@ Select-ISETheme
         pipo.lnk: Ping Tester
         png.lnk: Png Directory
         pp.lnk: PicPick
-        ppt.lnk: 
-        ps.lnk: 
-        psi.lnk: 
+        ppt.lnk: Powerpoint
+        ps.lnk: Powershell run as Administrator
+        psi.lnk: Powershell ISE run as Administrator
         pt.lnk: 
-        putty.lnk: 
+        putty.lnk: Putty
         pw.lnk: 
-        python.lnk: 
+        python.lnk: Run 'Python' with cmd.exe
         rb.lnk: 
         rdp.lnk: mstsc wrap
         rs.lnk: 

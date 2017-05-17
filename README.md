@@ -167,7 +167,7 @@ Select-ISETheme
 - Add the Favorite link.
 - That is System Driver(ex: C:\), Slave Drive(ex: D:\), png and test directory.
 
-![](https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/favorit.png)
+![](https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/favorite.png)
 
 
 

@@ -43,7 +43,7 @@ powershell -nop -command "start-process powershell -verb runas -argumentlist {-c
 powershell -nop -command "start-process powershell -verb runas -argumentlist {-command IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/ur0n2/dotfiles-for-windows/master/git-less.ps1')}"
 ```
 
-- [git-less.ps1](https://github.com/ur0n2/dotfiles-for-windows/blob/master/git-less.ps1) file include to why i am using the iex function in powershell.(See the commit history)
+- [git-less.ps1](https://github.com/ur0n2/dotfiles-for-windows/blob/master/git-less.ps1) file include to why i am using the iex function in powershell.(Look at the commit history)
 
 
 ### Windows RUN(Win + R)
@@ -125,8 +125,8 @@ doskey serve = "cmd /k python -mSimpleHTTPServer"
 ```
 
 ### 8. bb.bat / rb.bat
-- bb: Immediately shutdown the system.
-- rb: Immediately reboot to system.
+- bb: Immediately __shutdown__ the system. That mean is "byebye".
+- rb: Immediately __reboot__ the system. That mean is "rebye".
 ```
 bb
 rb

@@ -2,10 +2,11 @@
 #LeeJunHwan(ur0n2)
 
 function DFW_MAKE_DIR_AT_DESKTOP{
-    Write-Output "[+] 바탕화면에 png, test 폴더 생성"
+    Write-Output "[+] 바탕화면에 png, test, gire-repo 디렉터리 생성"
     
     New-Item $env:USERPROFILE\Desktop\png -type directory -Force -ErrorAction SilentlyContinue | Out-Null
     New-Item $env:USERPROFILE\Desktop\test -type directory -Force -ErrorAction SilentlyContinue | Out-Null
+    New-Item $env:USERPROFILE\Desktop\git-repo -type directory -Force -ErrorAction SilentlyContinue | Out-Null
 }
 
 function DFW_ENV_VAR_REGISTER{

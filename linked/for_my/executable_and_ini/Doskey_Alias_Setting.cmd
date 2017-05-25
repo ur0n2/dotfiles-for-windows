@@ -19,6 +19,8 @@ doskey . = cd ..
 doskey .. = cd ../..
 doskey clear = cls
 doskey serve = "cmd /k python -mSimpleHTTPServer"
+doskey b64ff = "%systemdrive%\linked\for_my\executable_and_ini\b64ff.py"
+
 
 @echo -----------------------------------------------------------------------------
 @echo [+]       doskey ls = dir /W /P $*        
@@ -35,6 +37,7 @@ doskey serve = "cmd /k python -mSimpleHTTPServer"
 @echo [+]       doskey .. = cd ../..
 @echo [+]       doskey clear = cls
 @echo [+]       doskey serve = cmd /k "start /B & cd c:\ & python -mSimpleHTTPServer"
+@echo [+]       doskey b64ff = "%systemdrive%\linked\for_my\executable_and_ini\b64ff.py"
 @echo -----------------------------------------------------------------------------
 @echo [+]       2017. 03. 10
 @echo [+]       LeeJunHwan

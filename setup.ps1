@@ -60,6 +60,10 @@ function DFW_DOWNLOAD_TO_WEB{
     $output = $env:systemdrive + "\linked\for_my\executable_and_ini\ev.py"
     Invoke-WebRequest -Uri $url -OutFile $output
     
+    url = "https://raw.githubusercontent.com/ur0n2/b64ff/master/b64ff.py"
+    $output = $env:systemdrive + "\linked\for_my\executable_and_ini\b64ff.py"
+    Invoke-WebRequest -Uri $url -OutFile $output
+
     #$url = "https://gallery.technet.microsoft.com/ISE-Color-Theme-Cmdlets-24905f9e/file/113950/1/ISEColorThemeCmdlets.ps1"
     #$output = $env:systemdrive + "\linked\for_my\executable_and_ini\ISEColorThemeCmdlets.ps1"
     #Invoke-WebRequest -Uri $url -OutFile $output
